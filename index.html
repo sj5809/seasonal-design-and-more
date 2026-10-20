@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Seasonal Design &amp; More</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Handmade seasonal wreaths, porch decor and custom crafts from Seasonal Design and More in Taylor Mill, KY (formerly All Things Craft).">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&family=Caveat:wght@600&display=swap">
+<style>
+/* Layout: front-porch storefront. Evergreen ink on a pale porch-white ground, cranberry for action,
+   kraft-paper gift tags as the recurring handmade detail. Content column 1120px. */
+:root{
+  --bg:#f7f7f2; --surface:#ffffff; --ink:#1f3a33; --muted:#566b64; --line:#dfe3da;
+  --accent:#a8323f; --accent-ink:#ffffff; --gold:#d9a23a; --kraft:#e9d8b8; --kraft-ink:#5a4426;
+  --band:#1f3a33; --band-ink:#eef2ec; --band-muted:#b9c9c1; --focus:#d9a23a;
+  --display:"Young Serif", Georgia, "Times New Roman", serif;
+  --body:"Nunito Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --hand:"Caveat", "Bradley Hand", "Comic Sans MS", cursive;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141c19; --surface:#1c2622; --ink:#e8eee9; --muted:#a6b6af; --line:#2e3b36;
+  --accent:#e0606c; --accent-ink:#1a0d0f; --gold:#e6b65a; --kraft:#4a3d2a; --kraft-ink:#f1e2c4;
+  --band:#0e1513; --band-ink:#e8eee9; --band-muted:#94a69e; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141c19; --surface:#1c2622; --ink:#e8eee9; --muted:#a6b6af; --line:#2e3b36;
+  --accent:#e0606c; --accent-ink:#1a0d0f; --gold:#e6b65a; --kraft:#4a3d2a; --kraft-ink:#f1e2c4;
+  --band:#0e1513; --band-ink:#e8eee9; --band-muted:#94a69e; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body)}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.2rem, 5.2vw, 3.6rem)}
+h2{font-size:clamp(1.7rem, 3.4vw, 2.4rem)}
+h3{font-size:1.3rem}
+p{margin:0}
+.eyebrow{font:800 .78rem/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.hand{font-family:var(--hand);font-weight:600}
+.lede{font-size:1.15rem;color:var(--muted);max-width:56ch}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:10;background:var(--surface)}
+.site-head{position:sticky;top:env(safe-area-inset-top, 0px);z-index:9;background:var(--surface);border-bottom:1px solid var(--line)}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand-mark{width:42px;height:42px;flex:none}
+.brand-name{font-family:var(--display);font-size:1.2rem;line-height:1.1}
+.brand-sub{display:block;font:700 .7rem/1.2 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.nav{display:flex;gap:4px 18px;align-items:center;flex-wrap:wrap}
+.nav a{text-decoration:none;font-weight:700;font-size:.97rem;padding:6px 2px;border-bottom:2px solid transparent}
+.nav a:hover,.nav a[aria-current="page"]{border-bottom-color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:800 1rem/1 var(--body);text-decoration:none;
+  padding:14px 22px;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);cursor:pointer;transition:transform .15s ease, filter .15s ease}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.06)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.nav .btn{padding:10px 18px;font-size:.95rem;border-bottom-width:2px}
+
+/* hero */
+.hero{padding-block:clamp(36px,6vw,72px) clamp(40px,6vw,80px)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,64px);align-items:center}
+.hero-copy{display:grid;gap:20px;min-width:0}
+.hero-copy .hand{font-size:1.6rem;color:var(--accent);line-height:1}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+.trust{display:flex;gap:10px 22px;flex-wrap:wrap;padding:0;margin:8px 0 0;list-style:none;color:var(--muted);font-weight:700;font-size:.95rem}
+.trust li{display:flex;align-items:center;gap:8px}
+.trust svg{width:18px;height:18px;color:var(--gold);flex:none}
+.door{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.door figure{margin:0;border-radius:var(--r);overflow:hidden;background:var(--line);box-shadow:0 18px 40px -24px rgba(20,40,34,.55)}
+.door figure img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5}
+.door figure:first-child{grid-row:span 2}
+.door figure:first-child img{aspect-ratio:auto;height:100%}
+.door .tag{position:absolute;left:-10px;bottom:22px}
+
+/* kraft gift tag */
+.tag{display:inline-flex;align-items:center;gap:8px;background:var(--kraft);color:var(--kraft-ink);font:800 .74rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase;
+  padding:8px 12px 8px 22px;border-radius:4px 12px 12px 4px;position:relative;clip-path:polygon(12px 0,100% 0,100% 100%,12px 100%,0 50%)}
+.tag::before{content:"";position:absolute;left:8px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:var(--bg)}
+.tag.big{font-size:.82rem;padding:10px 14px 10px 26px}
+
+/* sections */
+section{scroll-margin-top:90px}
+.sec{padding-block:clamp(48px,7vw,88px)}
+.sec-head{display:grid;gap:12px;margin-bottom:32px;max-width:640px}
+.alt{background:var(--surface);border-block:1px solid var(--line)}
+
+/* seasons calendar strip */
+.seasons{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+.season{padding:18px 16px;border-right:1px solid var(--line);display:grid;gap:6px;align-content:start}
+.season:last-child{border-right:0}
+.season .months{font:800 .72rem/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.season h3{font-size:1.1rem}
+.season p{font-size:.93rem;color:var(--muted)}
+.season.now{background:var(--band);color:var(--band-ink)}
+.season.now .months,.season.now p{color:var(--band-muted)}
+.season .now-flag{display:none;font:800 .7rem/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.season.now .now-flag{display:block}
+
+/* product cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px}
+.card{display:grid;grid-template-rows:auto 1fr;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.card .ph{position:relative;aspect-ratio:4/5;background:var(--line);overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.card:hover .ph img{transform:scale(1.03)}
+.card .ph .tag{position:absolute;left:10px;top:12px}
+.card .body{display:grid;gap:10px;padding:18px 18px 20px;align-content:start}
+.card .body p{color:var(--muted);font-size:.97rem}
+.card .actions{display:flex;margin-top:4px}
+.linkbtn{font:800 .95rem/1 var(--body);color:var(--accent);background:none;border:0;padding:6px 0;cursor:pointer;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.chip{font:700 .93rem/1 var(--body);padding:10px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+/* ideas list */
+.ideas{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:0 32px;padding:0;margin:0;list-style:none}
+.ideas li{padding:14px 0;border-bottom:1px dashed var(--line);display:grid;gap:2px}
+.ideas b{font-weight:800}
+.ideas span{color:var(--muted);font-size:.94rem}
+
+/* how it works */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;counter-reset:s;padding:0;margin:0;list-style:none}
+.steps li{display:grid;gap:8px;align-content:start;padding-top:18px;border-top:3px solid var(--gold)}
+.steps li::before{counter-increment:s;content:"Step " counter(s);font:800 .75rem/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.steps p{color:var(--muted)}
+
+/* order form */
+.order-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,64px);align-items:start}
+.order-aside{display:grid;gap:18px;min-width:0}
+.note-card{background:var(--kraft);color:var(--kraft-ink);border-radius:var(--r);padding:20px 22px;display:grid;gap:8px;transform:rotate(-1deg)}
+.note-card .hand{font-size:1.5rem;line-height:1.1}
+.note-card p{font-size:.97rem}
+form{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:clamp(20px,3.5vw,32px);display:grid;gap:18px;min-width:0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:grid;gap:6px;min-width:0}
+label,.legend{font-weight:800;font-size:.93rem}
+.opt{font-weight:600;color:var(--muted)}
+input,select,textarea{font:inherit;font-size:1rem;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:12px 14px;width:100%;min-width:0}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb, var(--gold) 30%, transparent)}
+textarea{min-height:130px;resize:vertical}
+input[type=file]{padding:10px}
+.radios{display:flex;gap:10px;flex-wrap:wrap}
+.radios label{display:flex;align-items:center;gap:8px;font-weight:700;border:1.5px solid var(--line);border-radius:999px;padding:10px 16px;cursor:pointer;background:var(--bg)}
+.radios input{width:auto;accent-color:var(--accent)}
+.hint{font-size:.85rem;color:var(--muted)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-foot{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.status{border-radius:8px;padding:14px 16px;font-weight:700}
+.status.ok{background:color-mix(in srgb, var(--ink) 10%, var(--surface));border:1.5px solid var(--ink)}
+.status.err{background:color-mix(in srgb, var(--accent) 12%, var(--surface));border:1.5px solid var(--accent)}
+.copy-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.copy-line code{font:700 1rem var(--body);user-select:all;background:var(--bg);padding:6px 10px;border-radius:6px;border:1px solid var(--line)}
+
+/* visit band */
+.band{background:var(--band);color:var(--band-ink)}
+.band .wrap{padding-block:clamp(44px,6vw,72px);display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:32px}
+.band h2{color:var(--band-ink)}
+.band p,.band li{color:var(--band-muted)}
+.band a{color:var(--band-ink);font-weight:700}
+.band ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.band .k{display:block;font:800 .72rem/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.site-foot{background:var(--band);color:var(--band-muted);border-top:1px solid color-mix(in srgb, var(--band-ink) 14%, transparent);font-size:.88rem}
+.site-foot .wrap{padding-block:18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* page hero (crafts) */
+.page-hero{padding-block:clamp(36px,5vw,64px) 8px}
+.page-hero .wrap{display:grid;gap:14px}
+
+@media (max-width: 860px){
+  .hero-grid,.order-grid{grid-template-columns:1fr}
+  .seasons{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .season{border-bottom:1px solid var(--line)}
+  .season:nth-child(2n){border-right:0}
+  .band .wrap{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+}
+@media (max-width: 520px){
+  .row{grid-template-columns:1fr}
+  .seasons{grid-template-columns:1fr}
+  .season{border-right:0}
+  .nav{gap:4px 14px;width:100%;justify-content:space-between}
+  .nav .btn{padding:9px 14px}
+  .site-head .wrap{gap:8px}
+  .door .tag{left:6px}
+}
+</style>
+<meta property="og:title" content="Seasonal Design &amp; More"><meta property="og:description" content="Handmade seasonal wreaths, porch decor and custom crafts from Seasonal Design and More in Taylor Mill, KY (formerly All Things Craft)."><meta property="og:image" content="img/orange-plaid-wreath.jpg"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2217%22 fill=%22none%22 stroke=%22%231f3a33%22 stroke-width=%227%22/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Store","name":"Seasonal Design and More Unlimited LLC","alternateName":"All Things Craft","description":"Handmade seasonal wreaths, porch decor and custom crafts.","email":"seasonaldesign@outlook.com","address":{"@type":"PostalAddress","streetAddress":"6006 Taylor Mill Rd","addressLocality":"Taylor Mill","addressRegion":"KY","postalCode":"41015","addressCountry":"US"},"sameAs":["https://www.facebook.com/AllThingsCraftNKY/"]}</script>
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17" fill="none" stroke="var(--ink)" stroke-width="7" stroke-dasharray="6 3.2"/><circle cx="24" cy="24" r="17" fill="none" stroke="var(--gold)" stroke-width="2" stroke-dasharray="2 9.3" stroke-dashoffset="2"/><path d="M24 33c-3-2.2-7-4.6-7-8.2 0-2 1.5-3.4 3.4-3.4 1.5 0 2.8.9 3.6 2.1.8-1.2 2.1-2.1 3.6-2.1 1.9 0 3.4 1.4 3.4 3.4 0 3.6-4 6-7 8.2z" fill="var(--accent)"/></svg><span><span class="brand-name">Seasonal Design &amp; More</span><span class="brand-sub">Handmade in Taylor Mill, KY</span></span></a>
+  <nav class="nav" aria-label="Main"><a href="crafts.html">Our Crafts</a><a href="index.html#how">How it works</a><a href="index.html#visit">Visit</a><a class="btn" href="index.html#order">Custom order</a></nav>
+</div></header>
+<main>
+<section class="hero"><div class="wrap hero-grid">
+  <div class="hero-copy">
+    <span class="hand">Made by hand, right here in Taylor Mill</span>
+    <h1>Wreaths and porch d&eacute;cor for every season, made just for your door.</h1>
+    <p class="lede">We&rsquo;re a small Northern Kentucky craft shop. Pick something you love from our work, or tell us your colors, your holiday and your door, and we&rsquo;ll make it for you.</p>
+    <div class="cta-row"><a class="btn" href="#order">Start a custom order</a><a class="btn ghost" href="crafts.html">See what we make</a></div>
+    <ul class="trust"><li><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5 12.6 7l6 .6-4.5 4 1.3 5.9L10 14.6l-5.4 2.9 1.3-5.9-4.5-4 6-.6z"/></svg>Every piece handmade</li><li><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5 12.6 7l6 .6-4.5 4 1.3 5.9L10 14.6l-5.4 2.9 1.3-5.9-4.5-4 6-.6z"/></svg>Local storefront in Taylor Mill</li><li><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5 12.6 7l6 .6-4.5 4 1.3 5.9L10 14.6l-5.4 2.9 1.3-5.9-4.5-4 6-.6z"/></svg>Shipping available</li></ul>
+  </div>
+  <div class="door">
+    <figure><img src="img/orange-plaid-wreath.jpg" alt="Orange and black plaid fall wreath on a white front door" width="643" height="800"></figure>
+    <figure><img src="img/nutcracker-porch-signs.jpg" alt="Pair of hand-painted red and green nutcracker porch signs" width="510" height="800"></figure>
+    <figure><img src="img/spring-wreath.jpg" alt="Pastel spring deco mesh wreath" width="479" height="639"></figure>
+    <span class="tag big">Fall 2026 &middot; now taking orders</span>
+  </div>
+</div></section>
+
+<section class="sec alt" id="seasons"><div class="wrap">
+  <div class="sec-head"><span class="eyebrow">Our year at the shop</span><h2>Something new on the door every season</h2><p class="lede">Order a little early for the big holidays.</p></div>
+  <div class="seasons"><div class="season" data-s="winter"><span class="now-flag">On the workbench now</span><span class="months">Dec – Feb</span><h3>Christmas & Valentine’s</h3><p>Nutcrackers, holiday wreaths, hearts and XOXO.</p></div><div class="season" data-s="spring"><span class="now-flag">On the workbench now</span><span class="months">Mar – May</span><h3>Spring & Easter</h3><p>Pastels, florals and bright bows for the front door.</p></div><div class="season" data-s="summer"><span class="now-flag">On the workbench now</span><span class="months">Jun – Aug</span><h3>Summer & July 4th</h3><p>Red, white and blue, porch swings and patio pieces.</p></div><div class="season" data-s="fall"><span class="now-flag">On the workbench now</span><span class="months">Sep – Nov</span><h3>Fall, Halloween & Thanksgiving</h3><p>Plaid, pumpkins, leaves and harvest centerpieces.</p></div><div class="season" data-s="any"><span class="now-flag">On the workbench now</span><span class="months">All year</span><h3>Any occasion</h3><p>Team colors, birthdays, showers, memorials and gifts.</p></div></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="sec-head"><span class="eyebrow">From our workbench</span><h2>A few things we&rsquo;ve made lately</h2></div>
+  <div class="grid"><article class="card" data-cat="wreaths" data-season="fall">
+  <div class="ph"><img src="img/orange-plaid-wreath.jpg" alt="Harvest Plaid Wreath: Pumpkin-orange burlap and black buffalo plaid over black deco mesh. Bold enough to read from the street." width="643" height="800" loading="lazy"><span class="tag">Fall · Halloween</span></div>
+  <div class="body"><h3>Harvest Plaid Wreath</h3><p>Pumpkin-orange burlap and black buffalo plaid over black deco mesh. Bold enough to read from the street.</p>
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Harvest Plaid Wreath" data-cat="wreaths">Make one like this for me</a></div></div>
+</article><article class="card" data-cat="arrangements" data-season="fall">
+  <div class="ph"><img src="img/fall-centerpiece.jpg" alt="Give Thanks Centerpiece: Maple leaves, wheat, a little pumpkin and a hand-lettered &quot;thankful&quot; pick. Made for a table, bench or porch step." width="336" height="448" loading="lazy"><span class="tag">Fall · Thanksgiving</span></div>
+  <div class="body"><h3>Give Thanks Centerpiece</h3><p>Maple leaves, wheat, a little pumpkin and a hand-lettered &quot;thankful&quot; pick. Made for a table, bench or porch step.</p>
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Give Thanks Centerpiece" data-cat="arrangements">Make one like this for me</a></div></div>
+</article><article class="card" data-cat="porch" data-season="christmas">
+  <div class="ph"><img src="img/nutcracker-porch-signs.jpg" alt="Nutcracker Porch Pair: Hand-painted wooden nutcrackers in red and green, gold details and all. Sized to stand beside the front door." width="510" height="800" loading="lazy"><span class="tag">Christmas</span></div>
+  <div class="body"><h3>Nutcracker Porch Pair</h3><p>Hand-painted wooden nutcrackers in red and green, gold details and all. Sized to stand beside the front door.</p>
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Nutcracker Porch Pair" data-cat="porch">Make one like this for me</a></div></div>
+</article><article class="card" data-cat="wreaths" data-season="spring">
+  <div class="ph"><img src="img/spring-wreath.jpg" alt="Pastel Spring Wreath: Lavender, robin-egg blue, buttercup and pink. Spring in curls and bows." width="479" height="639" loading="lazy"><span class="tag">Spring · Easter</span></div>
+  <div class="body"><h3>Pastel Spring Wreath</h3><p>Lavender, robin-egg blue, buttercup and pink. Spring in curls and bows.</p>
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Pastel Spring Wreath" data-cat="wreaths">Make one like this for me</a></div></div>
+</article></div>
+  <p style="margin-top:28px"><a class="btn ghost" href="crafts.html">See all our crafts</a></p>
+</div></section>
+
+<section class="sec alt" id="how"><div class="wrap">
+  <div class="sec-head"><span class="eyebrow">Custom orders</span><h2>How a custom piece comes together</h2></div>
+  <ol class="steps">
+    <li><h3>Tell us your idea</h3><p>Fill out the form below with your colors, holiday, size and when you need it. A photo of your door or an inspiration picture helps a lot.</p></li>
+    <li><h3>We talk it through</h3><p>We&rsquo;ll email you back to go over the design, materials and price before anything gets made.</p></li>
+    <li><h3>Pick up or ship</h3><p>Grab it at our Taylor Mill shop, or we&rsquo;ll pack it up and ship it to you.</p></li>
+  </ol>
+</div></section>
+
+<section class="sec" id="order"><div class="wrap order-grid">
+  <div class="order-aside">
+    <span class="eyebrow">Custom order request</span>
+    <h2>Let&rsquo;s make something for your home</h2>
+    <p class="lede">No payment and no commitment. This just starts the conversation.</p>
+    <div class="note-card"><span class="hand">Helpful to include</span><p>The holiday or season, your colors, where it will hang (door, window, mantel), roughly how big, and the date you need it by.</p></div>
+    <p class="hint">Prefer email? Write to us at <span style="user-select:all;font-weight:800">seasonaldesign@outlook.com</span>.</p>
+  </div>
+
+  <form id="orderForm" novalidate>
+    <div id="itemNote" class="status ok" hidden></div>
+    <div class="row">
+      <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+    </div>
+    <div class="row">
+      <div class="field"><label for="f-phone">Phone <span class="opt">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+      <div class="field"><label for="f-type">What would you like?</label>
+        <select id="f-type" name="item_type">
+          <option>Door wreath</option><option>Porch sign or porch d&eacute;cor</option><option>Centerpiece or arrangement</option>
+          <option>Painted furniture</option><option>Gift or something else</option><option>Just a question</option>
+        </select></div>
+    </div>
+    <div class="row">
+      <div class="field"><label for="f-season">Season or occasion</label>
+        <select id="f-season" name="occasion">
+          <option>Fall / Halloween / Thanksgiving</option><option>Christmas / Winter</option><option>Valentine&rsquo;s Day</option>
+          <option>Spring / Easter</option><option>Summer / July 4th</option><option>Team or school colors</option>
+          <option>Birthday, shower or wedding</option><option>Memorial or sympathy</option><option>Everyday / any season</option>
+        </select></div>
+      <div class="field"><label for="f-date">Needed by <span class="opt">(optional)</span></label><input id="f-date" name="needed_by" type="date"></div>
+    </div>
+    <div class="row">
+      <div class="field"><label for="f-colors">Colors you&rsquo;d like</label><input id="f-colors" name="colors" placeholder="e.g. navy, white and a little gold"></div>
+      <div class="field"><label for="f-budget">Budget <span class="opt">(optional)</span></label>
+        <select id="f-budget" name="budget"><option value="">Not sure yet</option><option>Under $50</option><option>$50 &ndash; $100</option><option>$100 &ndash; $200</option><option>$200+</option></select></div>
+    </div>
+    <div class="field"><label for="f-details">Tell us about it</label><textarea id="f-details" name="details" required placeholder="Where will it go? How big? Any names, words or must-haves?"></textarea></div>
+    <div class="field"><span class="legend" id="lg-get">How would you like to get it?</span>
+      <div class="radios" role="radiogroup" aria-labelledby="lg-get">
+        <label><input type="radio" name="delivery" value="Pick up in Taylor Mill" id="f-pick" checked> Pick up in Taylor Mill</label>
+        <label><input type="radio" name="delivery" value="Ship it to me" id="f-ship"> Ship it to me</label>
+      </div></div>
+    <div class="field"><label for="f-photo">Photo of your door or an idea <span class="opt">(optional)</span></label><input id="f-photo" name="attachment" type="file" accept="image/*"><span class="hint">JPG or PNG, under 5 MB.</span></div>
+    <div class="hp" aria-hidden="true"><label for="f-hp">Leave this empty</label><input id="f-hp" name="_honey" tabindex="-1" autocomplete="off"></div>
+    <div class="form-foot"><button class="btn" type="submit" id="f-submit">Send my request</button><span class="hint">We&rsquo;ll email you back to talk it over.</span></div>
+    <div id="formStatus" role="status" aria-live="polite"></div>
+  </form>
+</div></section>
+</main>
+<section class="band" id="visit"><div class="wrap">
+  <div style="display:grid;gap:14px;min-width:0"><h2>Come see it in person</h2><p>Our storefront is on Taylor Mill Road, just south of Covington. Wreaths look even better up close. Shipping is available too.</p></div>
+  <div><span class="k">Shop</span><ul><li>Seasonal Design and More Unlimited LLC</li><li>6006 Taylor Mill Rd, Taylor Mill, KY 41015</li><li><a href="https://www.google.com/maps/search/?api=1&query=6006+Taylor+Mill+Rd+Taylor+Mill+KY+41015" target="_blank" rel="noopener">Get directions</a></li></ul></div>
+  <div><span class="k">Get in touch</span><ul><li><span style="user-select:all">seasonaldesign@outlook.com</span></li><li><a href="index.html#order">Send a custom order request</a></li><li><a href="https://www.facebook.com/AllThingsCraftNKY/" target="_blank" rel="noopener">Our old Facebook page (All Things Craft)</a></li></ul></div>
+</div></section>
+<footer class="site-foot"><div class="wrap"><span>&copy; <span data-year>2026</span> Seasonal Design and More Unlimited LLC</span><span>Formerly All Things Craft &middot; Northern Kentucky</span></div></footer>
+<script>
+document.querySelectorAll('[data-year]').forEach(e=>e.textContent=new Date().getFullYear());
+document.querySelectorAll('a[data-item]').forEach(a=>a.addEventListener('click',()=>{
+  try{sessionStorage.setItem('sdm-item',JSON.stringify({item:a.dataset.item,cat:a.dataset.cat}))}catch(e){}
+}));
+
+const ENDPOINT='https://formsubmit.co/ajax/seasonaldesign@outlook.com';
+const EMAIL='seasonaldesign@outlook.com';
+// highlight the current season
+(function(){const m=new Date().getMonth();const k=m===11||m<2?'winter':m<5?'spring':m<8?'summer':'fall';
+  const el=document.querySelector('.season[data-s="'+k+'"]');if(el)el.classList.add('now');
+  const t=document.querySelector('.door .tag');const names={winter:'Christmas',spring:'Spring',summer:'Summer',fall:'Fall'};
+  if(t)t.textContent=names[k]+' '+new Date().getFullYear()+' · now taking orders';})();
+// prefill from "Make one like this"
+const typeMap={wreaths:'Door wreath',porch:'Porch sign or porch décor',arrangements:'Centerpiece or arrangement',furniture:'Painted furniture'};
+function prefill(item,cat){
+  const note=document.getElementById('itemNote');note.hidden=false;note.textContent='You’re asking about: '+item+'. Tell us how you’d like yours.';
+  if(typeMap[cat])document.getElementById('f-type').value=typeMap[cat];
+  const d=document.getElementById('f-details');if(!d.value)d.value='I’d like something like your '+item+'. ';
+}
+document.querySelectorAll('a[data-item]').forEach(a=>a.addEventListener('click',()=>prefill(a.dataset.item,a.dataset.cat)));
+try{const s=JSON.parse(sessionStorage.getItem('sdm-item')||'null');if(s){prefill(s.item,s.cat);sessionStorage.removeItem('sdm-item');}}catch(e){}
+
+const form=document.getElementById('orderForm'),statusEl=document.getElementById('formStatus'),btn=document.getElementById('f-submit');
+function show(kind,html){statusEl.className='status '+kind;statusEl.innerHTML=html;}
+form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const req=['f-name','f-email','f-details'];let bad=null;
+  req.forEach(id=>{const el=document.getElementById(id);const ok=el.value.trim()&&(el.type!=='email'||/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value));el.setAttribute('aria-invalid',ok?'false':'true');if(!ok&&!bad)bad=el;});
+  if(bad){show('err','Please add your name, a valid email and a few details so we can get back to you.');bad.focus();return;}
+  const file=document.getElementById('f-photo').files[0];
+  if(file&&file.size>5*1024*1024){show('err','That photo is over 5 MB. Try a smaller one, or email it to us after you send the form.');return;}
+  const fd=new FormData(form);
+  fd.append('_subject','New custom order request from '+fd.get('name')+' ('+fd.get('item_type')+')');
+  fd.append('_template','table');fd.append('_replyto',fd.get('email'));
+  if(!file)fd.delete('attachment');
+  btn.disabled=true;btn.textContent='Sending…';statusEl.className='';statusEl.textContent='';
+  try{
+    const r=await fetch(ENDPOINT,{method:'POST',body:fd,headers:{'Accept':'application/json'}});
+    const j=await r.json().catch(()=>({}));
+    if(!r.ok||String(j.success)==='false')throw new Error(j.message||'Send failed');
+    form.reset();document.getElementById('itemNote').hidden=true;
+    show('ok','Thank you! Your request is on its way to us. We’ll email you back soon.');
+  }catch(err){
+    show('err','We couldn’t send your request just now. Please email it to us directly and we’ll take it from there.<span class="copy-line"><code id="emailCopy">'+EMAIL+'</code><button type="button" class="linkbtn" id="copyBtn">Copy email</button></span>');
+    document.getElementById('copyBtn').addEventListener('click',ev=>{
+      navigator.clipboard?.writeText(EMAIL).then(()=>{ev.target.textContent='Copied';}).catch(()=>{const r=document.createRange();r.selectNodeContents(document.getElementById('emailCopy'));const s=getSelection();s.removeAllRanges();s.addRange(r);});
+    });
+  }finally{btn.disabled=false;btn.textContent='Send my request';}
+});
+</script>
+</body>
+</html>
