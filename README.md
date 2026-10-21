@@ -4,15 +4,14 @@ Static site (no build step): `index.html`, `crafts.html`, `img/`.
 Business: Seasonal Design and More Unlimited LLC (formerly All Things Craft), 6006 Taylor Mill Rd, Taylor Mill, KY 41015.
 
 ## Custom order form → seasonaldesign@outlook.com
-The form posts to FormSubmit (free, no backend): `https://formsubmit.co/ajax/seasonaldesign@outlook.com`.
+The form posts to a Google Apps Script web app on Sebastian's Google account (same setup as Crewitts Creek).
+Each request:
+1. adds a row to the **Requests** tab of the Google Sheet "Seasonal Design – Website Inbox"
+2. saves the customer's photo to the Drive folder "Seasonal Design – Customer Photos"
+3. emails seasonaldesign@outlook.com with the photo attached, and Reply goes to the customer
 
-**One-time activation:** the FIRST time anyone submits the form on the live site, FormSubmit emails
-seasonaldesign@outlook.com an "Activate form" link. Click it once — no submissions are delivered until then.
-Tip: after activating, FormSubmit gives you a random alias string; swap it into ENDPOINT in index.html
-so the real email address isn't visible in the page source (cuts spam).
-
-Includes: honeypot spam field, optional photo attachment, reply-to set to the customer's email,
-and a fallback message with the email address if sending fails.
+Code: `google-apps-script/Code.gs` · Setup / changes: `google-apps-script/SETUP.md`.
+The site's `ENDPOINT` in index.html points at the web app's `/exec` URL. If sending fails, the form shows the shop email instead.
 
 ## Deploy
 - **GitHub Pages:** push this folder to a repo → Settings → Pages → deploy from `main` / root.

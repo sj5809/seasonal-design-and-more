@@ -282,7 +282,7 @@ input[type=file]{padding:10px}
           <option>Wreath, swag or arrangement</option><option>Something else crafty</option><option>Just a question</option>
         </select></div>
     </div>
-    <div class="field"><label for="f-photo">Photo to print or an idea picture <span class="opt">(optional)</span></label><input id="f-photo" name="attachment" type="file" accept="image/*,.heic,.heif"><span class="hint">One photo, under 5 MB. Have more, or a bigger file? Email them to us after you send this.</span></div>
+    <div class="field"><label for="f-photo">Photo to print or an idea picture <span class="opt">(optional)</span></label><input id="f-photo" name="attachment" type="file" accept="image/*,.heic,.heif"><span class="hint">One photo, up to 10 MB. Have more? Email them to us after you send this.</span></div>
     <div class="row">
       <div class="field"><label for="f-text">Words, names or dates to add <span class="opt">(optional)</span></label><input id="f-text" name="text_to_add" placeholder="e.g. The Millers &middot; Est. 1998"></div>
       <div class="field"><label for="f-season">Occasion</label>
@@ -320,7 +320,7 @@ document.querySelectorAll('a[data-item]').forEach(a=>a.addEventListener('click',
   try{sessionStorage.setItem('sdm-item',JSON.stringify({item:a.dataset.item,cat:a.dataset.cat}))}catch(e){}
 }));
 
-const ENDPOINT='https://formsubmit.co/ajax/seasonaldesign@outlook.com';
+const ENDPOINT='https://script.google.com/macros/s/AKfycbxP-wyua_pRmH5liRolYHtQNHR08CGFSkDljma6IVhMMlCCh-r9C-3Mh3O4TpSmWXl-/exec';
 const EMAIL='seasonaldesign@outlook.com';
 // prefill from "Make one like this"
 const typeMap={plates:'Photo printed on a license plate',glass:'Photo printed on glass',apparel:'Photo printed on a shirt or sweatshirt',decor:'Wreath, swag or arrangement',painted:'Something else crafty'};
@@ -334,30 +334,32 @@ try{const s=JSON.parse(sessionStorage.getItem('sdm-item')||'null');if(s){prefill
 
 const form=document.getElementById('orderForm'),statusEl=document.getElementById('formStatus'),btn=document.getElementById('f-submit');
 function show(kind,html){statusEl.className='status '+kind;statusEl.innerHTML=html;}
+function readFile(f){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]);r.onerror=rej;r.readAsDataURL(f);});}
+function fail(){
+  show('err','We couldn’t send your request just now. Please email it to us directly and we’ll take it from there.<span class="copy-line"><code id="emailCopy">'+EMAIL+'</code><button type="button" class="linkbtn" id="copyBtn">Copy email</button></span>');
+  document.getElementById('copyBtn').addEventListener('click',ev=>{
+    navigator.clipboard?.writeText(EMAIL).then(()=>{ev.target.textContent='Copied';}).catch(()=>{const r=document.createRange();r.selectNodeContents(document.getElementById('emailCopy'));const s=getSelection();s.removeAllRanges();s.addRange(r);});
+  });
+}
 form.addEventListener('submit',async e=>{
   e.preventDefault();
   const req=['f-name','f-email','f-details'];let bad=null;
   req.forEach(id=>{const el=document.getElementById(id);const ok=el.value.trim()&&(el.type!=='email'||/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value));el.setAttribute('aria-invalid',ok?'false':'true');if(!ok&&!bad)bad=el;});
   if(bad){show('err','Please add your name, a valid email and a few details so we can get back to you.');bad.focus();return;}
   const file=document.getElementById('f-photo').files[0];
-  if(file&&file.size>5*1024*1024){show('err','That photo is over 5 MB. Try a smaller one, or email it to us after you send the form.');return;}
-  const fd=new FormData(form);
-  fd.append('_subject','New custom order request from '+fd.get('name')+' ('+fd.get('item_type')+')');
-  fd.append('_template','table');fd.append('_replyto',fd.get('email'));
-  if(!file)fd.delete('attachment');
-  btn.disabled=true;btn.textContent='Sending…';statusEl.className='';statusEl.textContent='';
+  if(file&&file.size>10*1024*1024){show('err','That photo is over 10 MB. Try a smaller one, or email it to us after you send the form.');return;}
+  const data=Object.fromEntries([...new FormData(form).entries()].filter(([k,v])=>typeof v==='string'));
+  btn.disabled=true;btn.textContent=file?'Uploading your photo…':'Sending…';statusEl.className='';statusEl.textContent='';
   try{
-    const r=await fetch(ENDPOINT,{method:'POST',body:fd,headers:{'Accept':'application/json'}});
-    const j=await r.json().catch(()=>({}));
-    if(!r.ok||String(j.success)==='false')throw new Error(j.message||'Send failed');
+    if(!ENDPOINT.startsWith('https://script.google.com/'))throw new Error('Form endpoint not set');
+    if(file)data.photo={name:file.name,type:file.type||'image/jpeg',data:await readFile(file)};
+    const r=await fetch(ENDPOINT,{method:'POST',body:JSON.stringify(data),headers:{'Content-Type':'text/plain;charset=utf-8'}});
+    const j=await r.json();
+    if(!j.ok)throw new Error(j.error||'Send failed');
     form.reset();document.getElementById('itemNote').hidden=true;
     show('ok','Thank you! Your request is on its way to us. We’ll email you back soon.');
-  }catch(err){
-    show('err','We couldn’t send your request just now. Please email it to us directly and we’ll take it from there.<span class="copy-line"><code id="emailCopy">'+EMAIL+'</code><button type="button" class="linkbtn" id="copyBtn">Copy email</button></span>');
-    document.getElementById('copyBtn').addEventListener('click',ev=>{
-      navigator.clipboard?.writeText(EMAIL).then(()=>{ev.target.textContent='Copied';}).catch(()=>{const r=document.createRange();r.selectNodeContents(document.getElementById('emailCopy'));const s=getSelection();s.removeAllRanges();s.addRange(r);});
-    });
-  }finally{btn.disabled=false;btn.textContent='Send my request';}
+  }catch(err){console.error(err);fail();}
+  finally{btn.disabled=false;btn.textContent='Send my request';}
 });
 </script>
 </body>
