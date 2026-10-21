@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Our Crafts · Seasonal Design &amp; More</title>
+<title>Our Work · Seasonal Design &amp; More</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Handmade wreaths, porch signs, centerpieces and painted furniture from our Taylor Mill, KY shop.">
+<meta name="description" content="Printed license plates, printed glass, shirts, wreaths and arrangements made in our Taylor Mill, KY shop.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&family=Caveat:wght@600&display=swap">
 <style>
 /* Layout: front-porch storefront. Evergreen ink on a pale porch-white ground, cranberry for action,
@@ -72,10 +72,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .trust svg{width:18px;height:18px;color:var(--gold);flex:none}
 .door{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .door figure{margin:0;border-radius:var(--r);overflow:hidden;background:var(--line);box-shadow:0 18px 40px -24px rgba(20,40,34,.55)}
-.door figure img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5}
-.door figure:first-child{grid-row:span 2}
-.door figure:first-child img{aspect-ratio:auto;height:100%}
-.door .tag{position:absolute;left:-10px;bottom:22px}
+.door figure img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/2}
+.door figure:first-child{grid-column:span 2}
+.door figure:first-child img{aspect-ratio:3/2}
+.door .tag{position:absolute;left:-10px;top:22px}
 
 /* kraft gift tag */
 .tag{display:inline-flex;align-items:center;gap:8px;background:var(--kraft);color:var(--kraft-ink);font:800 .74rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase;
@@ -104,9 +104,10 @@ section{scroll-margin-top:90px}
 /* product cards */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px}
 .card{display:grid;grid-template-rows:auto 1fr;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.card .ph{position:relative;aspect-ratio:4/5;background:var(--line);overflow:hidden}
+.card .ph{position:relative;aspect-ratio:4/3;background:var(--line);overflow:hidden}
 .card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
 .card:hover .ph img{transform:scale(1.03)}
+.card .ph.fit-contain img{object-fit:contain;padding:44px 18px 18px}
 .card .ph .tag{position:absolute;left:10px;top:12px}
 .card .body{display:grid;gap:10px;padding:18px 18px 20px;align-content:start}
 .card .body p{color:var(--muted);font-size:.97rem}
@@ -115,6 +116,14 @@ section{scroll-margin-top:90px}
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
 .chip{font:700 .93rem/1 var(--body);padding:10px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+/* print surfaces */
+.surfaces{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.surface{display:grid;grid-template-rows:auto 1fr;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.sph{aspect-ratio:3/2;background:var(--line);overflow:hidden}
+.sph img{width:100%;height:100%;object-fit:cover}
+.sbody{display:grid;gap:10px;padding:20px;align-content:start}
+.sbody p{color:var(--muted);font-size:.97rem}
 
 /* ideas list */
 .ideas{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:0 32px;padding:0;margin:0;list-style:none}
@@ -177,6 +186,7 @@ input[type=file]{padding:10px}
   .season:nth-child(2n){border-right:0}
   .band .wrap{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr}
+  .surfaces{grid-template-columns:1fr}
 }
 @media (max-width: 520px){
   .row{grid-template-columns:1fr}
@@ -188,64 +198,104 @@ input[type=file]{padding:10px}
   .door .tag{left:6px}
 }
 </style>
-<meta property="og:title" content="Our Crafts · Seasonal Design &amp; More"><meta property="og:description" content="Handmade wreaths, porch signs, centerpieces and painted furniture from our Taylor Mill, KY shop."><meta property="og:image" content="img/orange-plaid-wreath.jpg"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2217%22 fill=%22none%22 stroke=%22%231f3a33%22 stroke-width=%227%22/%3E%3C/svg%3E">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Store","name":"Seasonal Design and More Unlimited LLC","alternateName":"All Things Craft","description":"Handmade seasonal wreaths, porch decor and custom crafts.","email":"seasonaldesign@outlook.com","address":{"@type":"PostalAddress","streetAddress":"6006 Taylor Mill Rd","addressLocality":"Taylor Mill","addressRegion":"KY","postalCode":"41015","addressCountry":"US"},"sameAs":["https://www.facebook.com/AllThingsCraftNKY/"]}</script>
+<meta property="og:title" content="Our Work · Seasonal Design &amp; More"><meta property="og:description" content="Printed license plates, printed glass, shirts, wreaths and arrangements made in our Taylor Mill, KY shop."><meta property="og:image" content="img/glass-highland-cows.jpg"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2217%22 fill=%22none%22 stroke=%22%231f3a33%22 stroke-width=%227%22/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Store","name":"Seasonal Design and More Unlimited LLC","alternateName":"All Things Craft","description":"Custom photo printing on license plates, glass and shirts, plus handmade wreaths and seasonal decor.","email":"seasonaldesign@outlook.com","address":{"@type":"PostalAddress","streetAddress":"6006 Taylor Mill Rd","addressLocality":"Taylor Mill","addressRegion":"KY","postalCode":"41015","addressCountry":"US"},"sameAs":["https://www.facebook.com/AllThingsCraftNKY/"]}</script>
 </head>
 <body>
 <header class="site-head"><div class="wrap">
-  <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17" fill="none" stroke="var(--ink)" stroke-width="7" stroke-dasharray="6 3.2"/><circle cx="24" cy="24" r="17" fill="none" stroke="var(--gold)" stroke-width="2" stroke-dasharray="2 9.3" stroke-dashoffset="2"/><path d="M24 33c-3-2.2-7-4.6-7-8.2 0-2 1.5-3.4 3.4-3.4 1.5 0 2.8.9 3.6 2.1.8-1.2 2.1-2.1 3.6-2.1 1.9 0 3.4 1.4 3.4 3.4 0 3.6-4 6-7 8.2z" fill="var(--accent)"/></svg><span><span class="brand-name">Seasonal Design &amp; More</span><span class="brand-sub">Handmade in Taylor Mill, KY</span></span></a>
-  <nav class="nav" aria-label="Main"><a href="crafts.html" aria-current="page">Our Crafts</a><a href="index.html#how">How it works</a><a href="index.html#visit">Visit</a><a class="btn" href="index.html#order">Custom order</a></nav>
+  <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17" fill="none" stroke="var(--ink)" stroke-width="7" stroke-dasharray="6 3.2"/><circle cx="24" cy="24" r="17" fill="none" stroke="var(--gold)" stroke-width="2" stroke-dasharray="2 9.3" stroke-dashoffset="2"/><path d="M24 33c-3-2.2-7-4.6-7-8.2 0-2 1.5-3.4 3.4-3.4 1.5 0 2.8.9 3.6 2.1.8-1.2 2.1-2.1 3.6-2.1 1.9 0 3.4 1.4 3.4 3.4 0 3.6-4 6-7 8.2z" fill="var(--accent)"/></svg><span><span class="brand-name">Seasonal Design &amp; More</span><span class="brand-sub">Custom prints &amp; crafts &middot; Taylor Mill, KY</span></span></a>
+  <nav class="nav" aria-label="Main"><a href="crafts.html" aria-current="page">Our Work</a><a href="index.html#print">Photo printing</a><a href="index.html#visit">Visit</a><a class="btn" href="index.html#order">Custom order</a></nav>
 </div></header>
 <main>
 <section class="page-hero"><div class="wrap">
-  <span class="eyebrow">Our crafts</span>
-  <h1>Things we&rsquo;ve made, and can make for you</h1>
-  <p class="lede">Every piece here was handmade in our shop. Most are one of a kind, so think of them as ideas. Tap &ldquo;Make one like this for me&rdquo; and we&rsquo;ll build yours in your colors.</p>
+  <span class="eyebrow">Our work</span>
+  <h1>Printed pictures, wreaths and handmade pieces</h1>
+  <p class="lede">Everything here was made in our shop. Most pieces are one of a kind, so think of them as ideas. Tap &ldquo;Order one like this&rdquo; and we&rsquo;ll make yours with your photo, your words or your colors.</p>
 </div></section>
 <section class="sec" style="padding-top:32px"><div class="wrap">
-  <div class="filters" role="group" aria-label="Filter crafts"><button type="button" class="chip" data-f="all" aria-pressed="true">Everything</button><button type="button" class="chip" data-f="wreaths" aria-pressed="false">Door wreaths</button><button type="button" class="chip" data-f="porch" aria-pressed="false">Porch signs</button><button type="button" class="chip" data-f="arrangements" aria-pressed="false">Arrangements</button><button type="button" class="chip" data-f="furniture" aria-pressed="false">Painted furniture</button></div>
-  <div class="grid" id="craftGrid"><article class="card" data-cat="wreaths" data-season="fall">
+  <div class="filters" role="group" aria-label="Filter crafts"><button type="button" class="chip" data-f="all" aria-pressed="true">Everything</button><button type="button" class="chip" data-f="plates" aria-pressed="false">License plates</button><button type="button" class="chip" data-f="glass" aria-pressed="false">Printed glass</button><button type="button" class="chip" data-f="apparel" aria-pressed="false">Shirts</button><button type="button" class="chip" data-f="decor" aria-pressed="false">Wreaths & arrangements</button><button type="button" class="chip" data-f="painted" aria-pressed="false">Painted pieces</button></div>
+  <div class="grid" id="craftGrid"><article class="card" data-cat="glass" data-season="fall">
+  <div class="ph"><img src="img/glass-highland-cows.jpg" alt="Highland Cow Harvest Glass: Highland cows, a red barn and a mountain sunset printed in full color on glass. Glossy, vivid and made to be displayed." width="997" height="896" loading="lazy"><span class="tag">Glass · Fall</span></div>
+  <div class="body"><h3>Highland Cow Harvest Glass</h3><p>Highland cows, a red barn and a mountain sunset printed in full color on glass. Glossy, vivid and made to be displayed.</p>
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Highland Cow Harvest Glass" data-cat="glass">Order one like this</a></div></div>
+</article><article class="card" data-cat="plates" data-season="any">
+  <div class="ph fit-contain"><img src="img/plate-uk-wildcats.jpg" alt="Wildcats License Plate: Big Blue on a printed plate for the front of the car, the garage or the man cave. Ask about your team or school." width="966" height="588" loading="lazy"><span class="tag">License plate</span></div>
+  <div class="body"><h3>Wildcats License Plate</h3><p>Big Blue on a printed plate for the front of the car, the garage or the man cave. Ask about your team or school.</p>
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Wildcats License Plate" data-cat="plates">Order one like this</a></div></div>
+</article><article class="card" data-cat="glass" data-season="fall">
+  <div class="ph"><img src="img/glass-gather-here.jpg" alt="&quot;Gather Here&quot; Glass: &quot;Gather Here With Grateful Hearts&quot; over a cozy autumn porch scene. A warm piece for the Thanksgiving table or counter." width="1000" height="740" loading="lazy"><span class="tag">Glass · Thanksgiving</span></div>
+  <div class="body"><h3>&quot;Gather Here&quot; Glass</h3><p>&quot;Gather Here With Grateful Hearts&quot; over a cozy autumn porch scene. A warm piece for the Thanksgiving table or counter.</p>
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="&quot;Gather Here&quot; Glass" data-cat="glass">Order one like this</a></div></div>
+</article><article class="card" data-cat="glass" data-season="christmas">
+  <div class="ph"><img src="img/glass-let-it-snow.jpg" alt="&quot;Let It Snow&quot; Snowmen Glass: A snowman family in plaid scarves with a glowing winter village behind them." width="1000" height="651" loading="lazy"><span class="tag">Glass · Christmas</span></div>
+  <div class="body"><h3>&quot;Let It Snow&quot; Snowmen Glass</h3><p>A snowman family in plaid scarves with a glowing winter village behind them.</p>
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="&quot;Let It Snow&quot; Snowmen Glass" data-cat="glass">Order one like this</a></div></div>
+</article><article class="card" data-cat="glass" data-season="christmas">
+  <div class="ph"><img src="img/glass-christmas-village.jpg" alt="Christmas Village Glass: A snowy village square with a lit tree, lanterns and a horse-drawn sleigh. Pure Christmas card." width="1000" height="592" loading="lazy"><span class="tag">Glass · Christmas</span></div>
+  <div class="body"><h3>Christmas Village Glass</h3><p>A snowy village square with a lit tree, lanterns and a horse-drawn sleigh. Pure Christmas card.</p>
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Christmas Village Glass" data-cat="glass">Order one like this</a></div></div>
+</article><article class="card" data-cat="apparel" data-season="fall">
+  <div class="ph"><img src="img/sweatshirt-fall-print.jpg" alt="Printed Fall Sweatshirt: A full-color fall scene printed on a soft white sweatshirt. Send us any picture and we can put it on a shirt." width="912" height="1000" loading="lazy"><span class="tag">Shirts &amp; sweatshirts</span></div>
+  <div class="body"><h3>Printed Fall Sweatshirt</h3><p>A full-color fall scene printed on a soft white sweatshirt. Send us any picture and we can put it on a shirt.</p>
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Printed Fall Sweatshirt" data-cat="apparel">Order one like this</a></div></div>
+</article><article class="card" data-cat="decor" data-season="christmas">
+  <div class="ph"><img src="img/christmas-lantern-arrangement.jpg" alt="Winter Lantern Arrangement: A white wooden lantern frame filled with frosted pine, holly, berries and a red cardinal." width="775" height="1000" loading="lazy"><span class="tag">Arrangement · Christmas</span></div>
+  <div class="body"><h3>Winter Lantern Arrangement</h3><p>A white wooden lantern frame filled with frosted pine, holly, berries and a red cardinal.</p>
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Winter Lantern Arrangement" data-cat="decor">Order one like this</a></div></div>
+</article><article class="card" data-cat="decor" data-season="christmas">
+  <div class="ph"><img src="img/christmas-magnolia-centerpiece.jpg" alt="Magnolia &amp; Pine Centerpiece: Deep red magnolias with long-needle pine and pinecones, built low for the dining table." width="882" height="1000" loading="lazy"><span class="tag">Centerpiece · Christmas</span></div>
+  <div class="body"><h3>Magnolia &amp; Pine Centerpiece</h3><p>Deep red magnolias with long-needle pine and pinecones, built low for the dining table.</p>
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Magnolia &amp; Pine Centerpiece" data-cat="decor">Order one like this</a></div></div>
+</article><article class="card" data-cat="decor" data-season="christmas">
+  <div class="ph"><img src="img/christmas-urn-centerpiece.jpg" alt="Holly Urn Centerpiece: Variegated holly, berries and pine in a white pedestal urn, topped with a plaid gift box." width="882" height="1000" loading="lazy"><span class="tag">Centerpiece · Christmas</span></div>
+  <div class="body"><h3>Holly Urn Centerpiece</h3><p>Variegated holly, berries and pine in a white pedestal urn, topped with a plaid gift box.</p>
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Holly Urn Centerpiece" data-cat="decor">Order one like this</a></div></div>
+</article><article class="card" data-cat="decor" data-season="fall">
+  <div class="ph"><img src="img/fall-frame-swag.jpg" alt="Rustic Frame Fall Swag: A distressed wood frame with a big burlap and plaid bow and autumn florals. Hangs on a door or wall." width="1000" height="938" loading="lazy"><span class="tag">Wall décor · Fall</span></div>
+  <div class="body"><h3>Rustic Frame Fall Swag</h3><p>A distressed wood frame with a big burlap and plaid bow and autumn florals. Hangs on a door or wall.</p>
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Rustic Frame Fall Swag" data-cat="decor">Order one like this</a></div></div>
+</article><article class="card" data-cat="decor" data-season="fall">
   <div class="ph"><img src="img/orange-plaid-wreath.jpg" alt="Harvest Plaid Wreath: Pumpkin-orange burlap and black buffalo plaid over black deco mesh. Bold enough to read from the street." width="643" height="800" loading="lazy"><span class="tag">Fall · Halloween</span></div>
   <div class="body"><h3>Harvest Plaid Wreath</h3><p>Pumpkin-orange burlap and black buffalo plaid over black deco mesh. Bold enough to read from the street.</p>
-  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Harvest Plaid Wreath" data-cat="wreaths">Make one like this for me</a></div></div>
-</article><article class="card" data-cat="arrangements" data-season="fall">
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Harvest Plaid Wreath" data-cat="decor">Order one like this</a></div></div>
+</article><article class="card" data-cat="decor" data-season="fall">
   <div class="ph"><img src="img/fall-centerpiece.jpg" alt="Give Thanks Centerpiece: Maple leaves, wheat, a little pumpkin and a hand-lettered &quot;thankful&quot; pick. Made for a table, bench or porch step." width="336" height="448" loading="lazy"><span class="tag">Fall · Thanksgiving</span></div>
   <div class="body"><h3>Give Thanks Centerpiece</h3><p>Maple leaves, wheat, a little pumpkin and a hand-lettered &quot;thankful&quot; pick. Made for a table, bench or porch step.</p>
-  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Give Thanks Centerpiece" data-cat="arrangements">Make one like this for me</a></div></div>
-</article><article class="card" data-cat="porch" data-season="christmas">
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Give Thanks Centerpiece" data-cat="decor">Order one like this</a></div></div>
+</article><article class="card" data-cat="painted" data-season="christmas">
   <div class="ph"><img src="img/nutcracker-porch-signs.jpg" alt="Nutcracker Porch Pair: Hand-painted wooden nutcrackers in red and green, gold details and all. Sized to stand beside the front door." width="510" height="800" loading="lazy"><span class="tag">Christmas</span></div>
   <div class="body"><h3>Nutcracker Porch Pair</h3><p>Hand-painted wooden nutcrackers in red and green, gold details and all. Sized to stand beside the front door.</p>
-  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Nutcracker Porch Pair" data-cat="porch">Make one like this for me</a></div></div>
-</article><article class="card" data-cat="wreaths" data-season="valentine">
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Nutcracker Porch Pair" data-cat="painted">Order one like this</a></div></div>
+</article><article class="card" data-cat="decor" data-season="valentine">
   <div class="ph"><img src="img/red-heart-wreath.jpg" alt="Sweetheart Wreath: Red and white heart ribbon with curled mesh tubes. A cheerful door for February." width="643" height="800" loading="lazy"><span class="tag">Valentine&#x27;s Day</span></div>
   <div class="body"><h3>Sweetheart Wreath</h3><p>Red and white heart ribbon with curled mesh tubes. A cheerful door for February.</p>
-  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Sweetheart Wreath" data-cat="wreaths">Make one like this for me</a></div></div>
-</article><article class="card" data-cat="wreaths" data-season="valentine">
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Sweetheart Wreath" data-cat="decor">Order one like this</a></div></div>
+</article><article class="card" data-cat="decor" data-season="valentine">
   <div class="ph"><img src="img/xoxo-valentine-wreath.jpg" alt="XOXO Burlap Wreath: Burlap, glitter hearts and &quot;XOXO&quot; ribbon worked into a full, round mesh wreath." width="643" height="800" loading="lazy"><span class="tag">Valentine&#x27;s Day</span></div>
   <div class="body"><h3>XOXO Burlap Wreath</h3><p>Burlap, glitter hearts and &quot;XOXO&quot; ribbon worked into a full, round mesh wreath.</p>
-  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="XOXO Burlap Wreath" data-cat="wreaths">Make one like this for me</a></div></div>
-</article><article class="card" data-cat="wreaths" data-season="spring">
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="XOXO Burlap Wreath" data-cat="decor">Order one like this</a></div></div>
+</article><article class="card" data-cat="decor" data-season="spring">
   <div class="ph"><img src="img/spring-wreath.jpg" alt="Pastel Spring Wreath: Lavender, robin-egg blue, buttercup and pink. Spring in curls and bows." width="479" height="639" loading="lazy"><span class="tag">Spring · Easter</span></div>
   <div class="body"><h3>Pastel Spring Wreath</h3><p>Lavender, robin-egg blue, buttercup and pink. Spring in curls and bows.</p>
-  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Pastel Spring Wreath" data-cat="wreaths">Make one like this for me</a></div></div>
-</article><article class="card" data-cat="wreaths" data-season="any">
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Pastel Spring Wreath" data-cat="decor">Order one like this</a></div></div>
+</article><article class="card" data-cat="decor" data-season="any">
   <div class="ph"><img src="img/blue-white-wreath.jpg" alt="Blue &amp; White Wreath: Royal blue and white mesh with glittered ribbon. Ask for it in your team or school colors." width="479" height="639" loading="lazy"><span class="tag">Any season · Team colors</span></div>
   <div class="body"><h3>Blue &amp; White Wreath</h3><p>Royal blue and white mesh with glittered ribbon. Ask for it in your team or school colors.</p>
-  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Blue &amp; White Wreath" data-cat="wreaths">Make one like this for me</a></div></div>
-</article><article class="card" data-cat="furniture" data-season="summer">
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Blue &amp; White Wreath" data-cat="decor">Order one like this</a></div></div>
+</article><article class="card" data-cat="painted" data-season="summer">
   <div class="ph"><img src="img/americana-porch-swing.jpg" alt="Americana Porch Swing: A wooden porch swing refinished in red stripes, natural wood and a starred navy back rail." width="686" height="684" loading="lazy"><span class="tag">Summer · July 4th</span></div>
   <div class="body"><h3>Americana Porch Swing</h3><p>A wooden porch swing refinished in red stripes, natural wood and a starred navy back rail.</p>
-  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Americana Porch Swing" data-cat="furniture">Make one like this for me</a></div></div>
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Americana Porch Swing" data-cat="painted">Order one like this</a></div></div>
 </article></div>
 </div></section>
 <section class="sec alt"><div class="wrap">
-  <div class="sec-head"><span class="eyebrow">More ideas</span><h2>Other ideas to ask about</h2><p class="lede">Don&rsquo;t see it pictured? These are a few ideas. If it goes on a door, a porch or a table, ask and we&rsquo;ll tell you what&rsquo;s possible.</p></div>
-  <ul class="ideas"><li><b>Deco mesh door wreaths</b><span>Our specialty. Any holiday, any colors.</span></li><li><b>Team & school wreaths</b><span>Your favorite team or your kid’s school colors.</span></li><li><b>Porch leaners & signs</b><span>Hand-painted characters and welcome boards.</span></li><li><b>Table centerpieces</b><span>Fall harvest, Christmas, Easter tables.</span></li><li><b>Refinished furniture</b><span>Porch swings, benches and small pieces, painted to order.</span></li><li><b>Memorial & sympathy pieces</b><span>Gentle colors, names or dates added.</span></li><li><b>Shower & party décor</b><span>Baby showers, bridal showers, birthdays.</span></li><li><b>Mailbox & lamp-post swags</b><span>Smaller pieces to match your wreath.</span></li><li><b>Gifts for teachers & neighbors</b><span>Small handmade pieces for the season.</span></li></ul>
+  <div class="sec-head"><span class="eyebrow">More ideas</span><h2>Ideas people love</h2><p class="lede">Don&rsquo;t see it pictured? If it&rsquo;s crafty, we can probably make it. Ask and we&rsquo;ll tell you what&rsquo;s possible.</p></div>
+  <ul class="ideas"><li><b>Pet portraits</b><span>Your dog, cat or horse on a plate, glass or shirt.</span></li><li><b>Family photos</b><span>Grandkids, weddings, reunions and new babies.</span></li><li><b>Team & school pride</b><span>Plates and shirts for your team or your kid’s school.</span></li><li><b>Memorial keepsakes</b><span>A favorite photo with a name and dates.</span></li><li><b>Business logos</b><span>Plates and shirts for your shop, truck or crew.</span></li><li><b>Seasonal scenes</b><span>Fall, Christmas and holiday glass for the counter or mantel.</span></li><li><b>Wreaths & swags</b><span>Any holiday, any colors, for the door or wall.</span></li><li><b>Centerpieces & lanterns</b><span>Built for your table and your season.</span></li><li><b>Gifts for teachers & neighbors</b><span>Small custom pieces for the holidays.</span></li></ul>
   <p style="margin-top:32px"><a class="btn" href="index.html#order">Ask about a custom piece</a></p>
 </div></section>
 </main>
 <section class="band" id="visit"><div class="wrap">
-  <div style="display:grid;gap:14px;min-width:0"><h2>Come see it in person</h2><p>Our storefront is on Taylor Mill Road, just south of Covington. Wreaths look even better up close. Shipping is available too.</p></div>
+  <div style="display:grid;gap:14px;min-width:0"><h2>Come see it in person</h2><p>Our storefront is on Taylor Mill Road, just south of Covington. Prints and wreaths look even better in person. Shipping is available too.</p></div>
   <div><span class="k">Shop</span><ul><li>Seasonal Design and More Unlimited LLC</li><li>6006 Taylor Mill Rd, Taylor Mill, KY 41015</li><li><a href="https://www.google.com/maps/search/?api=1&query=6006+Taylor+Mill+Rd+Taylor+Mill+KY+41015" target="_blank" rel="noopener">Get directions</a></li></ul></div>
   <div><span class="k">Get in touch</span><ul><li><span style="user-select:all">seasonaldesign@outlook.com</span></li><li><a href="index.html#order">Send a custom order request</a></li><li><a href="https://www.facebook.com/AllThingsCraftNKY/" target="_blank" rel="noopener">Our old Facebook page (All Things Craft)</a></li></ul></div>
 </div></section>

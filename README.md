@@ -21,7 +21,7 @@ and a fallback message with the email address if sending fails.
 
 ## Adding crafts
 Add a photo to `img/` and a card in `crafts.html` (copy an existing `<article class="card">`; set `data-cat` to
-wreaths / porch / arrangements / furniture). Photos came from the old All Things Craft Facebook page.
+plates / glass / apparel / decor / painted; add a 9th field "contain" for wide shots like plates). Photos: owner (Oct 2026) + old All Things Craft Facebook page.
 
 ## To confirm with the owner
 - Shop hours and a phone number (not listed anywhere public — add to the Visit section)
