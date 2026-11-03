@@ -163,6 +163,9 @@ const CATS = {
 /** Run once after adding GH_TOKEN and ADMIN_PASSWORD in Script properties. */
 function setupAdmin() {
   const p = PropertiesService.getScriptProperties();
+  if (/^(PASTE|TYPE)_/.test(p.getProperty('GH_TOKEN') || '') || /^(PASTE|TYPE)_/.test(p.getProperty('ADMIN_PASSWORD') || '')) {
+    throw new Error('Replace the placeholder values in Project Settings → Script properties first, then run setupAdmin again.');
+  }
   if (!p.getProperty('SESSION_SECRET')) p.setProperty('SESSION_SECRET', Utilities.getUuid() + Utilities.getUuid());
   const pw = p.getProperty('ADMIN_PASSWORD');
   if (pw) {
