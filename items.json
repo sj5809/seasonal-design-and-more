@@ -1,0 +1,186 @@
+{
+  "items": [
+    {
+      "id": "glass-highland-cows",
+      "name": "Highland Cow Harvest Glass",
+      "cat": "glass",
+      "tag": "Glass · Fall",
+      "blurb": "Highland cows, a red barn and a mountain sunset printed in full color on glass. Glossy, vivid and made to be displayed.",
+      "img": "img/glass-highland-cows.jpg",
+      "w": 997,
+      "h": 896
+    },
+    {
+      "id": "plate-uk-wildcats",
+      "name": "Wildcats License Plate",
+      "cat": "plates",
+      "tag": "License plate",
+      "blurb": "Big Blue on a printed plate for the front of the car, the garage or the man cave. Ask about your team or school.",
+      "img": "img/plate-uk-wildcats.jpg",
+      "w": 966,
+      "h": 588,
+      "fit": "contain"
+    },
+    {
+      "id": "glass-gather-here",
+      "name": "\"Gather Here\" Glass",
+      "cat": "glass",
+      "tag": "Glass · Thanksgiving",
+      "blurb": "\"Gather Here With Grateful Hearts\" over a cozy autumn porch scene. A warm piece for the Thanksgiving table or counter.",
+      "img": "img/glass-gather-here.jpg",
+      "w": 1000,
+      "h": 740
+    },
+    {
+      "id": "glass-let-it-snow",
+      "name": "\"Let It Snow\" Snowmen Glass",
+      "cat": "glass",
+      "tag": "Glass · Christmas",
+      "blurb": "A snowman family in plaid scarves with a glowing winter village behind them.",
+      "img": "img/glass-let-it-snow.jpg",
+      "w": 1000,
+      "h": 651
+    },
+    {
+      "id": "glass-christmas-village",
+      "name": "Christmas Village Glass",
+      "cat": "glass",
+      "tag": "Glass · Christmas",
+      "blurb": "A snowy village square with a lit tree, lanterns and a horse-drawn sleigh. Pure Christmas card.",
+      "img": "img/glass-christmas-village.jpg",
+      "w": 1000,
+      "h": 592
+    },
+    {
+      "id": "sweatshirt-fall-print",
+      "name": "Printed Fall Sweatshirt",
+      "cat": "apparel",
+      "tag": "Shirts & sweatshirts",
+      "blurb": "A full-color fall scene printed on a soft white sweatshirt. Send us any picture and we can put it on a shirt.",
+      "img": "img/sweatshirt-fall-print.jpg",
+      "w": 912,
+      "h": 1000
+    },
+    {
+      "id": "christmas-lantern-arrangement",
+      "name": "Winter Lantern Arrangement",
+      "cat": "decor",
+      "tag": "Arrangement · Christmas",
+      "blurb": "A white wooden lantern frame filled with frosted pine, holly, berries and a red cardinal.",
+      "img": "img/christmas-lantern-arrangement.jpg",
+      "w": 775,
+      "h": 1000
+    },
+    {
+      "id": "christmas-magnolia-centerpiece",
+      "name": "Magnolia & Pine Centerpiece",
+      "cat": "decor",
+      "tag": "Centerpiece · Christmas",
+      "blurb": "Deep red magnolias with long-needle pine and pinecones, built low for the dining table.",
+      "img": "img/christmas-magnolia-centerpiece.jpg",
+      "w": 882,
+      "h": 1000
+    },
+    {
+      "id": "christmas-urn-centerpiece",
+      "name": "Holly Urn Centerpiece",
+      "cat": "decor",
+      "tag": "Centerpiece · Christmas",
+      "blurb": "Variegated holly, berries and pine in a white pedestal urn, topped with a plaid gift box.",
+      "img": "img/christmas-urn-centerpiece.jpg",
+      "w": 882,
+      "h": 1000
+    },
+    {
+      "id": "fall-frame-swag",
+      "name": "Rustic Frame Fall Swag",
+      "cat": "decor",
+      "tag": "Wall décor · Fall",
+      "blurb": "A distressed wood frame with a big burlap and plaid bow and autumn florals. Hangs on a door or wall.",
+      "img": "img/fall-frame-swag.jpg",
+      "w": 1000,
+      "h": 938
+    },
+    {
+      "id": "orange-plaid-wreath",
+      "name": "Harvest Plaid Wreath",
+      "cat": "decor",
+      "tag": "Fall · Halloween",
+      "blurb": "Pumpkin-orange burlap and black buffalo plaid over black deco mesh. Bold enough to read from the street.",
+      "img": "img/orange-plaid-wreath.jpg",
+      "w": 643,
+      "h": 800
+    },
+    {
+      "id": "fall-centerpiece",
+      "name": "Give Thanks Centerpiece",
+      "cat": "decor",
+      "tag": "Fall · Thanksgiving",
+      "blurb": "Maple leaves, wheat, a little pumpkin and a hand-lettered \"thankful\" pick. Made for a table, bench or porch step.",
+      "img": "img/fall-centerpiece.jpg",
+      "w": 336,
+      "h": 448
+    },
+    {
+      "id": "nutcracker-porch-signs",
+      "name": "Nutcracker Porch Pair",
+      "cat": "painted",
+      "tag": "Christmas",
+      "blurb": "Hand-painted wooden nutcrackers in red and green, gold details and all. Sized to stand beside the front door.",
+      "img": "img/nutcracker-porch-signs.jpg",
+      "w": 510,
+      "h": 800
+    },
+    {
+      "id": "red-heart-wreath",
+      "name": "Sweetheart Wreath",
+      "cat": "decor",
+      "tag": "Valentine's Day",
+      "blurb": "Red and white heart ribbon with curled mesh tubes. A cheerful door for February.",
+      "img": "img/red-heart-wreath.jpg",
+      "w": 643,
+      "h": 800
+    },
+    {
+      "id": "xoxo-valentine-wreath",
+      "name": "XOXO Burlap Wreath",
+      "cat": "decor",
+      "tag": "Valentine's Day",
+      "blurb": "Burlap, glitter hearts and \"XOXO\" ribbon worked into a full, round mesh wreath.",
+      "img": "img/xoxo-valentine-wreath.jpg",
+      "w": 643,
+      "h": 800
+    },
+    {
+      "id": "spring-wreath",
+      "name": "Pastel Spring Wreath",
+      "cat": "decor",
+      "tag": "Spring · Easter",
+      "blurb": "Lavender, robin-egg blue, buttercup and pink. Spring in curls and bows.",
+      "img": "img/spring-wreath.jpg",
+      "w": 479,
+      "h": 639
+    },
+    {
+      "id": "blue-white-wreath",
+      "name": "Blue & White Wreath",
+      "cat": "decor",
+      "tag": "Any season · Team colors",
+      "blurb": "Royal blue and white mesh with glittered ribbon. Ask for it in your team or school colors.",
+      "img": "img/blue-white-wreath.jpg",
+      "w": 479,
+      "h": 639
+    },
+    {
+      "id": "americana-porch-swing",
+      "name": "Americana Porch Swing",
+      "cat": "painted",
+      "tag": "Summer · July 4th",
+      "blurb": "A wooden porch swing refinished in red stripes, natural wood and a starred navy back rail.",
+      "img": "img/americana-porch-swing.jpg",
+      "w": 686,
+      "h": 684
+    }
+  ],
+  "removed": []
+}

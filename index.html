@@ -117,6 +117,11 @@ section{scroll-margin-top:90px}
 .chip{font:700 .93rem/1 var(--body);padding:10px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 
+/* shop notice banner */
+.notice{background:var(--gold);color:#2a1e05}
+.notice .wrap{padding-block:12px}
+.notice p{font-weight:800;font-size:1.02rem;text-align:center;max-width:none}
+
 /* print surfaces */
 .surfaces{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
 .surface{display:grid;grid-template-rows:auto 1fr;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
@@ -206,7 +211,7 @@ input[type=file]{padding:10px}
   <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17" fill="none" stroke="var(--ink)" stroke-width="7" stroke-dasharray="6 3.2"/><circle cx="24" cy="24" r="17" fill="none" stroke="var(--gold)" stroke-width="2" stroke-dasharray="2 9.3" stroke-dashoffset="2"/><path d="M24 33c-3-2.2-7-4.6-7-8.2 0-2 1.5-3.4 3.4-3.4 1.5 0 2.8.9 3.6 2.1.8-1.2 2.1-2.1 3.6-2.1 1.9 0 3.4 1.4 3.4 3.4 0 3.6-4 6-7 8.2z" fill="var(--accent)"/></svg><span><span class="brand-name">Seasonal Design &amp; More</span><span class="brand-sub">Custom prints &amp; crafts &middot; Taylor Mill, KY</span></span></a>
   <nav class="nav" aria-label="Main"><a href="crafts.html">Our Work</a><a href="index.html#print">Photo printing</a><a href="index.html#visit">Visit</a><a class="btn" href="index.html#order">Custom order</a></nav>
 </div></header>
-<main>
+<main><div id="notice" class="notice" role="status" hidden><div class="wrap"><p></p></div></div>
 <section class="hero"><div class="wrap hero-grid">
   <div class="hero-copy">
     <span class="hand">Made by hand, right here in Taylor Mill</span>
@@ -230,22 +235,22 @@ input[type=file]{padding:10px}
 
 <section class="sec"><div class="wrap">
   <div class="sec-head"><span class="eyebrow">From our shop</span><h2>A few things we&rsquo;ve made lately</h2></div>
-  <div class="grid"><article class="card" data-cat="glass" data-season="fall">
+  <div class="grid" id="featuredGrid"><article class="card" data-cat="glass">
+  <div class="ph"><img src="img/glass-highland-cows.jpg" alt="Highland Cow Harvest Glass: Highland cows, a red barn and a mountain sunset printed in full color on glass. Glossy, vivid and made to be displayed." width="997" height="896" loading="lazy"><span class="tag">Glass · Fall</span></div>
+  <div class="body"><h3>Highland Cow Harvest Glass</h3><p>Highland cows, a red barn and a mountain sunset printed in full color on glass. Glossy, vivid and made to be displayed.</p>
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Highland Cow Harvest Glass" data-cat="glass">Order one like this</a></div></div>
+</article><article class="card" data-cat="plates">
+  <div class="ph fit-contain"><img src="img/plate-uk-wildcats.jpg" alt="Wildcats License Plate: Big Blue on a printed plate for the front of the car, the garage or the man cave. Ask about your team or school." width="966" height="588" loading="lazy"><span class="tag">License plate</span></div>
+  <div class="body"><h3>Wildcats License Plate</h3><p>Big Blue on a printed plate for the front of the car, the garage or the man cave. Ask about your team or school.</p>
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Wildcats License Plate" data-cat="plates">Order one like this</a></div></div>
+</article><article class="card" data-cat="glass">
   <div class="ph"><img src="img/glass-gather-here.jpg" alt="&quot;Gather Here&quot; Glass: &quot;Gather Here With Grateful Hearts&quot; over a cozy autumn porch scene. A warm piece for the Thanksgiving table or counter." width="1000" height="740" loading="lazy"><span class="tag">Glass · Thanksgiving</span></div>
   <div class="body"><h3>&quot;Gather Here&quot; Glass</h3><p>&quot;Gather Here With Grateful Hearts&quot; over a cozy autumn porch scene. A warm piece for the Thanksgiving table or counter.</p>
   <div class="actions"><a class="linkbtn" href="index.html#order" data-item="&quot;Gather Here&quot; Glass" data-cat="glass">Order one like this</a></div></div>
-</article><article class="card" data-cat="glass" data-season="christmas">
+</article><article class="card" data-cat="glass">
   <div class="ph"><img src="img/glass-let-it-snow.jpg" alt="&quot;Let It Snow&quot; Snowmen Glass: A snowman family in plaid scarves with a glowing winter village behind them." width="1000" height="651" loading="lazy"><span class="tag">Glass · Christmas</span></div>
   <div class="body"><h3>&quot;Let It Snow&quot; Snowmen Glass</h3><p>A snowman family in plaid scarves with a glowing winter village behind them.</p>
   <div class="actions"><a class="linkbtn" href="index.html#order" data-item="&quot;Let It Snow&quot; Snowmen Glass" data-cat="glass">Order one like this</a></div></div>
-</article><article class="card" data-cat="decor" data-season="christmas">
-  <div class="ph"><img src="img/christmas-lantern-arrangement.jpg" alt="Winter Lantern Arrangement: A white wooden lantern frame filled with frosted pine, holly, berries and a red cardinal." width="775" height="1000" loading="lazy"><span class="tag">Arrangement · Christmas</span></div>
-  <div class="body"><h3>Winter Lantern Arrangement</h3><p>A white wooden lantern frame filled with frosted pine, holly, berries and a red cardinal.</p>
-  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Winter Lantern Arrangement" data-cat="decor">Order one like this</a></div></div>
-</article><article class="card" data-cat="decor" data-season="fall">
-  <div class="ph"><img src="img/fall-frame-swag.jpg" alt="Rustic Frame Fall Swag: A distressed wood frame with a big burlap and plaid bow and autumn florals. Hangs on a door or wall." width="1000" height="938" loading="lazy"><span class="tag">Wall décor · Fall</span></div>
-  <div class="body"><h3>Rustic Frame Fall Swag</h3><p>A distressed wood frame with a big burlap and plaid bow and autumn florals. Hangs on a door or wall.</p>
-  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="Rustic Frame Fall Swag" data-cat="decor">Order one like this</a></div></div>
 </article></div>
   <p style="margin-top:28px"><a class="btn ghost" href="crafts.html">See all our work</a></p>
 </div></section>
@@ -316,21 +321,32 @@ input[type=file]{padding:10px}
 <footer class="site-foot"><div class="wrap"><span>&copy; <span data-year>2026</span> Seasonal Design and More Unlimited LLC</span><span>Formerly All Things Craft &middot; Northern Kentucky</span></div></footer>
 <script>
 document.querySelectorAll('[data-year]').forEach(e=>e.textContent=new Date().getFullYear());
-document.querySelectorAll('a[data-item]').forEach(a=>a.addEventListener('click',()=>{
-  try{sessionStorage.setItem('sdm-item',JSON.stringify({item:a.dataset.item,cat:a.dataset.cat}))}catch(e){}
-}));
+document.addEventListener('click',e=>{const a=e.target.closest('a[data-item]');if(!a)return;
+  if(window.prefill&&document.getElementById('orderForm')){window.prefill(a.dataset.item,a.dataset.cat);return;}
+  try{sessionStorage.setItem('sdm-item',JSON.stringify({item:a.dataset.item,cat:a.dataset.cat}))}catch(err){}});
+// Live content from items.json / site.json (edited on /myshop). Baked HTML stays if this fails.
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function cardHTML(it){const fit=it.fit==='contain'?' fit-contain':'';const alt=it.name+(it.blurb?': '+it.blurb:'');
+  return '<article class="card" data-cat="'+esc(it.cat)+'"><div class="ph'+fit+'"><img src="'+esc(it.img)+'" alt="'+esc(alt)+'" width="'+(it.w||800)+'" height="'+(it.h||800)+'" loading="lazy"><span class="tag">'+esc(it.tag||'')+'</span></div>'+
+  '<div class="body"><h3>'+esc(it.name)+'</h3><p>'+esc(it.blurb||'')+'</p><div class="actions"><a class="linkbtn" href="index.html#order" data-item="'+esc(it.name)+'" data-cat="'+esc(it.cat)+'">Order one like this</a></div></div></article>';}
+const bust='?v='+Date.now();
+fetch('site.json'+bust).then(r=>r.json()).then(d=>{const n=document.getElementById('notice');if(n&&d.notice&&d.notice.trim()){n.querySelector('p').textContent=d.notice;n.hidden=false;}}).catch(()=>{});
+fetch('items.json'+bust).then(r=>r.json()).then(d=>{
+  const g=document.getElementById('craftGrid'),f=document.getElementById('featuredGrid');
+  if(g){g.innerHTML=d.items.map(cardHTML).join('');window.applyFilter&&window.applyFilter();}
+  if(f){f.innerHTML=d.items.slice(0,4).map(cardHTML).join('');}
+}).catch(()=>{});
 
 const ENDPOINT='https://script.google.com/macros/s/AKfycbxP-wyua_pRmH5liRolYHtQNHR08CGFSkDljma6IVhMMlCCh-r9C-3Mh3O4TpSmWXl-/exec';
 const EMAIL='seasonaldesign@outlook.com';
 // prefill from "Make one like this"
-const typeMap={plates:'Photo printed on a license plate',glass:'Photo printed on glass',apparel:'Photo printed on a shirt or sweatshirt',decor:'Wreath, swag or arrangement',painted:'Something else crafty'};
-function prefill(item,cat){
+const typeMap={plates:'Photo printed on a license plate',glass:'Photo printed on glass',apparel:'Photo printed on a shirt or sweatshirt',decor:'Wreath, swag or arrangement',painted:'Something else crafty',other:'Something else crafty'};
+window.prefill=function(item,cat){
   const note=document.getElementById('itemNote');note.hidden=false;note.textContent='You’re asking about '+item+'. Tell us how you’d like yours.';
   if(typeMap[cat])document.getElementById('f-type').value=typeMap[cat];
   const d=document.getElementById('f-details');if(!d.value)d.value='I’d like '+(item.startsWith('a ')?item:'something like your '+item)+'. ';
 }
-document.querySelectorAll('a[data-item]').forEach(a=>a.addEventListener('click',()=>prefill(a.dataset.item,a.dataset.cat)));
-try{const s=JSON.parse(sessionStorage.getItem('sdm-item')||'null');if(s){prefill(s.item,s.cat);sessionStorage.removeItem('sdm-item');}}catch(e){}
+try{const s=JSON.parse(sessionStorage.getItem('sdm-item')||'null');if(s&&location.pathname.indexOf('crafts')<0){window.prefill(s.item,s.cat);sessionStorage.removeItem('sdm-item');}}catch(e){}
 
 const form=document.getElementById('orderForm'),statusEl=document.getElementById('formStatus'),btn=document.getElementById('f-submit');
 function show(kind,html){statusEl.className='status '+kind;statusEl.innerHTML=html;}

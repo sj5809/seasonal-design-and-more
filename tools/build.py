@@ -1,0 +1,479 @@
+#!/usr/bin/env python3
+"""Builds the Seasonal Design & More site: site/index.html, site/crafts.html (+ artifact preview variant)."""
+import pathlib, re, html
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent  # repo root
+import json
+DATA = json.loads((ROOT / 'items.json').read_text())
+ITEMS = DATA['items']
+SITE = json.loads((ROOT / 'site.json').read_text())
+EMAIL = 'seasonaldesign@outlook.com'
+ADDRESS = '6006 Taylor Mill Rd, Taylor Mill, KY 41015'
+MAPS = 'https://www.google.com/maps/search/?api=1&query=6006+Taylor+Mill+Rd+Taylor+Mill+KY+41015'
+FB = 'https://www.facebook.com/AllThingsCraftNKY/'
+
+# Items now live in items.json (edited from /myshop). Run: python3 tools/build.py
+
+CATS = [('all', 'Everything'), ('plates', 'License plates'), ('glass', 'Printed glass'),
+        ('apparel', 'Shirts'), ('decor', 'Wreaths & arrangements'), ('painted', 'Painted pieces'), ('other', 'Other crafts')]
+
+FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&family=Caveat:wght@600&display=swap">'
+
+CSS = r"""
+/* Layout: front-porch storefront. Evergreen ink on a pale porch-white ground, cranberry for action,
+   kraft-paper gift tags as the recurring handmade detail. Content column 1120px. */
+:root{
+  --bg:#f7f7f2; --surface:#ffffff; --ink:#1f3a33; --muted:#566b64; --line:#dfe3da;
+  --accent:#a8323f; --accent-ink:#ffffff; --gold:#d9a23a; --kraft:#e9d8b8; --kraft-ink:#5a4426;
+  --band:#1f3a33; --band-ink:#eef2ec; --band-muted:#b9c9c1; --focus:#d9a23a;
+  --display:"Young Serif", Georgia, "Times New Roman", serif;
+  --body:"Nunito Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --hand:"Caveat", "Bradley Hand", "Comic Sans MS", cursive;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141c19; --surface:#1c2622; --ink:#e8eee9; --muted:#a6b6af; --line:#2e3b36;
+  --accent:#e0606c; --accent-ink:#1a0d0f; --gold:#e6b65a; --kraft:#4a3d2a; --kraft-ink:#f1e2c4;
+  --band:#0e1513; --band-ink:#e8eee9; --band-muted:#94a69e; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141c19; --surface:#1c2622; --ink:#e8eee9; --muted:#a6b6af; --line:#2e3b36;
+  --accent:#e0606c; --accent-ink:#1a0d0f; --gold:#e6b65a; --kraft:#4a3d2a; --kraft-ink:#f1e2c4;
+  --band:#0e1513; --band-ink:#e8eee9; --band-muted:#94a69e; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body)}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.2rem, 5.2vw, 3.6rem)}
+h2{font-size:clamp(1.7rem, 3.4vw, 2.4rem)}
+h3{font-size:1.3rem}
+p{margin:0}
+.eyebrow{font:800 .78rem/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.hand{font-family:var(--hand);font-weight:600}
+.lede{font-size:1.15rem;color:var(--muted);max-width:56ch}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:10;background:var(--surface)}
+.site-head{position:sticky;top:env(safe-area-inset-top, 0px);z-index:9;background:var(--surface);border-bottom:1px solid var(--line)}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand-mark{width:42px;height:42px;flex:none}
+.brand-name{font-family:var(--display);font-size:1.2rem;line-height:1.1}
+.brand-sub{display:block;font:700 .7rem/1.2 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.nav{display:flex;gap:4px 18px;align-items:center;flex-wrap:wrap}
+.nav a{text-decoration:none;font-weight:700;font-size:.97rem;padding:6px 2px;border-bottom:2px solid transparent}
+.nav a:hover,.nav a[aria-current="page"]{border-bottom-color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:800 1rem/1 var(--body);text-decoration:none;
+  padding:14px 22px;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);cursor:pointer;transition:transform .15s ease, filter .15s ease}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.06)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.nav .btn{padding:10px 18px;font-size:.95rem;border-bottom-width:2px}
+
+/* hero */
+.hero{padding-block:clamp(36px,6vw,72px) clamp(40px,6vw,80px)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,64px);align-items:center}
+.hero-copy{display:grid;gap:20px;min-width:0}
+.hero-copy .hand{font-size:1.6rem;color:var(--accent);line-height:1}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+.trust{display:flex;gap:10px 22px;flex-wrap:wrap;padding:0;margin:8px 0 0;list-style:none;color:var(--muted);font-weight:700;font-size:.95rem}
+.trust li{display:flex;align-items:center;gap:8px}
+.trust svg{width:18px;height:18px;color:var(--gold);flex:none}
+.door{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.door figure{margin:0;border-radius:var(--r);overflow:hidden;background:var(--line);box-shadow:0 18px 40px -24px rgba(20,40,34,.55)}
+.door figure img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/2}
+.door figure:first-child{grid-column:span 2}
+.door figure:first-child img{aspect-ratio:3/2}
+.door .tag{position:absolute;left:-10px;top:22px}
+
+/* kraft gift tag */
+.tag{display:inline-flex;align-items:center;gap:8px;background:var(--kraft);color:var(--kraft-ink);font:800 .74rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase;
+  padding:8px 12px 8px 22px;border-radius:4px 12px 12px 4px;position:relative;clip-path:polygon(12px 0,100% 0,100% 100%,12px 100%,0 50%)}
+.tag::before{content:"";position:absolute;left:8px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:var(--bg)}
+.tag.big{font-size:.82rem;padding:10px 14px 10px 26px}
+
+/* sections */
+section{scroll-margin-top:90px}
+.sec{padding-block:clamp(48px,7vw,88px)}
+.sec-head{display:grid;gap:12px;margin-bottom:32px;max-width:640px}
+.alt{background:var(--surface);border-block:1px solid var(--line)}
+
+/* seasons calendar strip */
+.seasons{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+.season{padding:18px 16px;border-right:1px solid var(--line);display:grid;gap:6px;align-content:start}
+.season:last-child{border-right:0}
+.season .months{font:800 .72rem/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.season h3{font-size:1.1rem}
+.season p{font-size:.93rem;color:var(--muted)}
+.season.now{background:var(--band);color:var(--band-ink)}
+.season.now .months,.season.now p{color:var(--band-muted)}
+.season .now-flag{display:none;font:800 .7rem/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.season.now .now-flag{display:block}
+
+/* product cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px}
+.card{display:grid;grid-template-rows:auto 1fr;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.card .ph{position:relative;aspect-ratio:4/3;background:var(--line);overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.card:hover .ph img{transform:scale(1.03)}
+.card .ph.fit-contain img{object-fit:contain;padding:44px 18px 18px}
+.card .ph .tag{position:absolute;left:10px;top:12px}
+.card .body{display:grid;gap:10px;padding:18px 18px 20px;align-content:start}
+.card .body p{color:var(--muted);font-size:.97rem}
+.card .actions{display:flex;margin-top:4px}
+.linkbtn{font:800 .95rem/1 var(--body);color:var(--accent);background:none;border:0;padding:6px 0;cursor:pointer;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.chip{font:700 .93rem/1 var(--body);padding:10px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+/* shop notice banner */
+.notice{background:var(--gold);color:#2a1e05}
+.notice .wrap{padding-block:12px}
+.notice p{font-weight:800;font-size:1.02rem;text-align:center;max-width:none}
+
+/* print surfaces */
+.surfaces{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.surface{display:grid;grid-template-rows:auto 1fr;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.sph{aspect-ratio:3/2;background:var(--line);overflow:hidden}
+.sph img{width:100%;height:100%;object-fit:cover}
+.sbody{display:grid;gap:10px;padding:20px;align-content:start}
+.sbody p{color:var(--muted);font-size:.97rem}
+
+/* ideas list */
+.ideas{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:0 32px;padding:0;margin:0;list-style:none}
+.ideas li{padding:14px 0;border-bottom:1px dashed var(--line);display:grid;gap:2px}
+.ideas b{font-weight:800}
+.ideas span{color:var(--muted);font-size:.94rem}
+
+/* how it works */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;counter-reset:s;padding:0;margin:0;list-style:none}
+.steps li{display:grid;gap:8px;align-content:start;padding-top:18px;border-top:3px solid var(--gold)}
+.steps li::before{counter-increment:s;content:"Step " counter(s);font:800 .75rem/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.steps p{color:var(--muted)}
+
+/* order form */
+.order-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,64px);align-items:start}
+.order-aside{display:grid;gap:18px;min-width:0}
+.note-card{background:var(--kraft);color:var(--kraft-ink);border-radius:var(--r);padding:20px 22px;display:grid;gap:8px;transform:rotate(-1deg)}
+.note-card .hand{font-size:1.5rem;line-height:1.1}
+.note-card p{font-size:.97rem}
+form{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:clamp(20px,3.5vw,32px);display:grid;gap:18px;min-width:0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:grid;gap:6px;min-width:0}
+label,.legend{font-weight:800;font-size:.93rem}
+.opt{font-weight:600;color:var(--muted)}
+input,select,textarea{font:inherit;font-size:1rem;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:12px 14px;width:100%;min-width:0}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb, var(--gold) 30%, transparent)}
+textarea{min-height:130px;resize:vertical}
+input[type=file]{padding:10px}
+.radios{display:flex;gap:10px;flex-wrap:wrap}
+.radios label{display:flex;align-items:center;gap:8px;font-weight:700;border:1.5px solid var(--line);border-radius:999px;padding:10px 16px;cursor:pointer;background:var(--bg)}
+.radios input{width:auto;accent-color:var(--accent)}
+.hint{font-size:.85rem;color:var(--muted)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-foot{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.status{border-radius:8px;padding:14px 16px;font-weight:700}
+.status.ok{background:color-mix(in srgb, var(--ink) 10%, var(--surface));border:1.5px solid var(--ink)}
+.status.err{background:color-mix(in srgb, var(--accent) 12%, var(--surface));border:1.5px solid var(--accent)}
+.copy-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.copy-line code{font:700 1rem var(--body);user-select:all;background:var(--bg);padding:6px 10px;border-radius:6px;border:1px solid var(--line)}
+
+/* visit band */
+.band{background:var(--band);color:var(--band-ink)}
+.band .wrap{padding-block:clamp(44px,6vw,72px);display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:32px}
+.band h2{color:var(--band-ink)}
+.band p,.band li{color:var(--band-muted)}
+.band a{color:var(--band-ink);font-weight:700}
+.band ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.band .k{display:block;font:800 .72rem/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.site-foot{background:var(--band);color:var(--band-muted);border-top:1px solid color-mix(in srgb, var(--band-ink) 14%, transparent);font-size:.88rem}
+.site-foot .wrap{padding-block:18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* page hero (crafts) */
+.page-hero{padding-block:clamp(36px,5vw,64px) 8px}
+.page-hero .wrap{display:grid;gap:14px}
+
+@media (max-width: 860px){
+  .hero-grid,.order-grid{grid-template-columns:1fr}
+  .seasons{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .season{border-bottom:1px solid var(--line)}
+  .season:nth-child(2n){border-right:0}
+  .band .wrap{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .surfaces{grid-template-columns:1fr}
+}
+@media (max-width: 520px){
+  .row{grid-template-columns:1fr}
+  .seasons{grid-template-columns:1fr}
+  .season{border-right:0}
+  .nav{gap:4px 14px;width:100%;justify-content:space-between}
+  .nav .btn{padding:9px 14px}
+  .site-head .wrap{gap:8px}
+  .door .tag{left:6px}
+}
+"""
+
+MARK = '''<svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17" fill="none" stroke="var(--ink)" stroke-width="7" stroke-dasharray="6 3.2"/><circle cx="24" cy="24" r="17" fill="none" stroke="var(--gold)" stroke-width="2" stroke-dasharray="2 9.3" stroke-dashoffset="2"/><path d="M24 33c-3-2.2-7-4.6-7-8.2 0-2 1.5-3.4 3.4-3.4 1.5 0 2.8.9 3.6 2.1.8-1.2 2.1-2.1 3.6-2.1 1.9 0 3.4 1.4 3.4 3.4 0 3.6-4 6-7 8.2z" fill="var(--accent)"/></svg>'''
+
+CHECK = '<svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5 12.6 7l6 .6-4.5 4 1.3 5.9L10 14.6l-5.4 2.9 1.3-5.9-4.5-4 6-.6z"/></svg>'
+
+
+def header(active):
+    def a(href, label, key):
+        cur = ' aria-current="page"' if key == active else ''
+        return f'<a href="{href}"{cur}>{label}</a>'
+    return f'''<header class="site-head"><div class="wrap">
+  <a class="brand" href="index.html">{MARK}<span><span class="brand-name">Seasonal Design &amp; More</span><span class="brand-sub">Custom prints &amp; crafts &middot; Taylor Mill, KY</span></span></a>
+  <nav class="nav" aria-label="Main">{a("crafts.html","Our Work","crafts")}{a("index.html#print","Photo printing","print")}{a("index.html#visit","Visit","visit")}<a class="btn" href="index.html#order">Custom order</a></nav>
+</div></header>'''
+
+
+def footer():
+    return f'''<section class="band" id="visit"><div class="wrap">
+  <div style="display:grid;gap:14px;min-width:0"><h2>Come see it in person</h2><p>Our storefront is on Taylor Mill Road, just south of Covington. Prints and wreaths look even better in person. Shipping is available too.</p></div>
+  <div><span class="k">Shop</span><ul><li>Seasonal Design and More Unlimited LLC</li><li>{ADDRESS}</li><li><a href="{MAPS}" target="_blank" rel="noopener">Get directions</a></li></ul></div>
+  <div><span class="k">Get in touch</span><ul><li><span style="user-select:all">{EMAIL}</span></li><li><a href="index.html#order">Send a custom order request</a></li><li><a href="{FB}" target="_blank" rel="noopener">Our old Facebook page (All Things Craft)</a></li></ul></div>
+</div></section>
+<footer class="site-foot"><div class="wrap"><span>&copy; <span data-year>2026</span> Seasonal Design and More Unlimited LLC</span><span>Formerly All Things Craft &middot; Northern Kentucky</span></div></footer>'''
+
+
+def card(it):
+    e = html.escape
+    fit = ' fit-contain' if it.get('fit') == 'contain' else ''
+    alt = it['name'] + (': ' + it['blurb'] if it.get('blurb') else '')
+    return f'''<article class="card" data-cat="{e(it['cat'])}">
+  <div class="ph{fit}"><img src="{e(it['img'])}" alt="{e(alt)}" width="{it.get('w', 800)}" height="{it.get('h', 800)}" loading="lazy"><span class="tag">{e(it.get('tag', ''))}</span></div>
+  <div class="body"><h3>{e(it['name'])}</h3><p>{e(it.get('blurb', ''))}</p>
+  <div class="actions"><a class="linkbtn" href="index.html#order" data-item="{e(it['name'])}" data-cat="{e(it['cat'])}">Order one like this</a></div></div>
+</article>'''
+
+
+SHARED_JS = r"""
+document.querySelectorAll('[data-year]').forEach(e=>e.textContent=new Date().getFullYear());
+document.addEventListener('click',e=>{const a=e.target.closest('a[data-item]');if(!a)return;
+  if(window.prefill&&document.getElementById('orderForm')){window.prefill(a.dataset.item,a.dataset.cat);return;}
+  try{sessionStorage.setItem('sdm-item',JSON.stringify({item:a.dataset.item,cat:a.dataset.cat}))}catch(err){}});
+// Live content from items.json / site.json (edited on /myshop). Baked HTML stays if this fails.
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function cardHTML(it){const fit=it.fit==='contain'?' fit-contain':'';const alt=it.name+(it.blurb?': '+it.blurb:'');
+  return '<article class="card" data-cat="'+esc(it.cat)+'"><div class="ph'+fit+'"><img src="'+esc(it.img)+'" alt="'+esc(alt)+'" width="'+(it.w||800)+'" height="'+(it.h||800)+'" loading="lazy"><span class="tag">'+esc(it.tag||'')+'</span></div>'+
+  '<div class="body"><h3>'+esc(it.name)+'</h3><p>'+esc(it.blurb||'')+'</p><div class="actions"><a class="linkbtn" href="index.html#order" data-item="'+esc(it.name)+'" data-cat="'+esc(it.cat)+'">Order one like this</a></div></div></article>';}
+const bust='?v='+Date.now();
+fetch('site.json'+bust).then(r=>r.json()).then(d=>{const n=document.getElementById('notice');if(n&&d.notice&&d.notice.trim()){n.querySelector('p').textContent=d.notice;n.hidden=false;}}).catch(()=>{});
+fetch('items.json'+bust).then(r=>r.json()).then(d=>{
+  const g=document.getElementById('craftGrid'),f=document.getElementById('featuredGrid');
+  if(g){g.innerHTML=d.items.map(cardHTML).join('');window.applyFilter&&window.applyFilter();}
+  if(f){f.innerHTML=d.items.slice(0,4).map(cardHTML).join('');}
+}).catch(()=>{});
+"""
+
+
+def page(title, desc, active, body, js, preview=False):
+    head = f'<title>{title}</title>\n<meta name="claude:viewport-fit-sides" content="cover">\n<meta name="description" content="{desc}">\n{FONTS}\n<style>{CSS}</style>'
+    inner = f'{head}\n{header(active)}\n<main><div id="notice" class="notice" role="status"{" hidden" if not SITE.get("notice","").strip() else ""}><div class="wrap"><p>{html.escape(SITE.get("notice",""))}</p></div></div>{body}</main>\n{footer()}\n<script>{SHARED_JS}{js}</script>'
+    if preview:
+        return inner
+    og = (f'<meta property="og:title" content="{title}"><meta property="og:description" content="{desc}">'
+          f'<meta property="og:image" content="img/glass-highland-cows.jpg"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2217%22 fill=%22none%22 stroke=%22%231f3a33%22 stroke-width=%227%22/%3E%3C/svg%3E">')
+    schema = ('<script type="application/ld+json">{"@context":"https://schema.org","@type":"Store","name":"Seasonal Design and More Unlimited LLC",'
+              '"alternateName":"All Things Craft","description":"Custom photo printing on license plates, glass and shirts, plus handmade wreaths and seasonal decor.",'
+              f'"email":"{EMAIL}","address":{{"@type":"PostalAddress","streetAddress":"6006 Taylor Mill Rd","addressLocality":"Taylor Mill","addressRegion":"KY","postalCode":"41015","addressCountry":"US"}},'
+              f'"sameAs":["{FB}"]}}</script>')
+    return ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
+            '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
+            f'{head}\n{og}\n{schema}\n</head>\n<body>\n{header(active)}\n<main><div id="notice" class="notice" role="status"{" hidden" if not SITE.get("notice","").strip() else ""}><div class="wrap"><p>{html.escape(SITE.get("notice",""))}</p></div></div>{body}</main>\n{footer()}\n<script>{SHARED_JS}{js}</script>\n</body>\n</html>\n')
+
+
+# ---------------- index ----------------
+SURFACES = [
+    ('plate-uk-wildcats', 'License plates', 'Your team, your pet, your grandkids, your business logo. Printed on a car-tag-size plate for the front bumper, the garage or a gift.', 966, 588),
+    ('glass-highland-cows', 'Glass', 'Full-color pictures printed on glass with a glossy, rich finish. Family photos, seasonal scenes and keepsakes.', 997, 896),
+    ('sweatshirt-fall-print', 'Shirts & sweatshirts', 'Any picture printed on a tee or a cozy sweatshirt. Great for reunions, birthdays, memorials and teams.', 912, 1000),
+]
+surfaces_html = ''.join(
+    f'<article class="surface"><div class="sph"><img src="img/{s}.jpg" alt="Example of a printed {t.lower()} piece" width="{w}" height="{h}" loading="lazy"></div>'
+    f'<div class="sbody"><h3>{t}</h3><p>{d}</p><a class="linkbtn" href="#order" data-item="a printed {t.lower()} piece" data-cat="{c}">Print my photo on {t.split(" &")[0].lower()}</a></div></article>'
+    for (s, t, d, w, h), c in zip(SURFACES, ['plates', 'glass', 'apparel']))
+
+featured = ITEMS[:4]
+
+INDEX_BODY = f'''
+<section class="hero"><div class="wrap hero-grid">
+  <div class="hero-copy">
+    <span class="hand">Made by hand, right here in Taylor Mill</span>
+    <h1>Your favorite pictures, printed on license plates, glass and more.</h1>
+    <p class="lede">Send us a photo of your family, your pet, your team or a scene you love, and we&rsquo;ll turn it into something you can hang, display or give. We make seasonal wreaths and arrangements too, and if it&rsquo;s crafty, just ask.</p>
+    <div class="cta-row"><a class="btn" href="#order">Send us your photo</a><a class="btn ghost" href="crafts.html">See our work</a></div>
+    <ul class="trust"><li>{CHECK}Made in our own shop</li><li>{CHECK}Local storefront in Taylor Mill</li><li>{CHECK}Shipping available</li></ul>
+  </div>
+  <div class="door">
+    <figure><img src="img/glass-gather-here.jpg" alt="Printed glass panel reading Gather Here With Grateful Hearts over an autumn porch scene" width="1000" height="740"></figure>
+    <figure><img src="img/plate-uk-wildcats.jpg" alt="Printed UK Wildcats license plate" width="966" height="588"></figure>
+    <figure><img src="img/glass-let-it-snow.jpg" alt="Printed glass with three snowmen and the words Let It Snow" width="1000" height="651"></figure>
+    <span class="tag big">Made in Taylor Mill, KY</span>
+  </div>
+</div></section>
+
+<section class="sec alt" id="print"><div class="wrap">
+  <div class="sec-head"><span class="eyebrow">Custom photo printing</span><h2>What we can print your picture on</h2><p class="lede">These are the favorites. Have something else in mind, like a mug, a sign or an ornament? Ask us.</p></div>
+  <div class="surfaces">{surfaces_html}</div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="sec-head"><span class="eyebrow">From our shop</span><h2>A few things we&rsquo;ve made lately</h2></div>
+  <div class="grid" id="featuredGrid">{''.join(card(c) for c in featured)}</div>
+  <p style="margin-top:28px"><a class="btn ghost" href="crafts.html">See all our work</a></p>
+</div></section>
+
+<section class="sec alt" id="how"><div class="wrap">
+  <div class="sec-head"><span class="eyebrow">How it works</span><h2>From your phone to your wall</h2></div>
+  <ol class="steps">
+    <li><h3>Send your photo and idea</h3><p>Use the form below. Attach the picture you want printed and tell us what you&rsquo;d like it on, plus any names, dates or words to add.</p></li>
+    <li><h3>We go over the details</h3><p>We&rsquo;ll email you back about the layout, size and price before anything gets printed or made.</p></li>
+    <li><h3>Pick up or ship</h3><p>Grab it at our Taylor Mill shop, or we&rsquo;ll pack it up and ship it to you.</p></li>
+  </ol>
+</div></section>
+
+<section class="sec" id="order"><div class="wrap order-grid">
+  <div class="order-aside">
+    <span class="eyebrow">Custom order request</span>
+    <h2>Let&rsquo;s make something just for you</h2>
+    <p class="lede">No payment and no commitment. This just starts the conversation.</p>
+    <div class="note-card"><span class="hand">Photo tips</span><p>Send the original picture straight from your phone, not a screenshot or a photo texted to you, so it prints sharp. Bright, in-focus photos print best.</p></div>
+    <p class="hint">Prefer email? Write to us at <span style="user-select:all;font-weight:800">{EMAIL}</span> and attach your photos there.</p>
+  </div>
+
+  <form id="orderForm" novalidate>
+    <div id="itemNote" class="status ok" hidden></div>
+    <div class="row">
+      <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+    </div>
+    <div class="row">
+      <div class="field"><label for="f-phone">Phone <span class="opt">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+      <div class="field"><label for="f-type">What would you like?</label>
+        <select id="f-type" name="item_type">
+          <option>Photo printed on a license plate</option><option>Photo printed on glass</option><option>Photo printed on a shirt or sweatshirt</option>
+          <option>Wreath, swag or arrangement</option><option>Something else crafty</option><option>Just a question</option>
+        </select></div>
+    </div>
+    <div class="field"><label for="f-photo">Photo to print or an idea picture <span class="opt">(optional)</span></label><input id="f-photo" name="attachment" type="file" accept="image/*,.heic,.heif"><span class="hint">One photo, up to 10 MB. Have more? Email them to us after you send this.</span></div>
+    <div class="row">
+      <div class="field"><label for="f-text">Words, names or dates to add <span class="opt">(optional)</span></label><input id="f-text" name="text_to_add" placeholder="e.g. The Millers &middot; Est. 1998"></div>
+      <div class="field"><label for="f-season">Occasion</label>
+        <select id="f-season" name="occasion">
+          <option>Gift / just because</option><option>Christmas</option><option>Fall / Thanksgiving</option><option>Birthday or anniversary</option>
+          <option>Team or school</option><option>Memorial</option><option>Pet</option><option>Business or logo</option>
+          <option>Valentine&rsquo;s, Easter or other holiday</option>
+        </select></div>
+    </div>
+    <div class="row">
+      <div class="field"><label for="f-qty">How many? <span class="opt">(optional)</span></label><input id="f-qty" name="quantity" type="number" min="1" inputmode="numeric" placeholder="1"></div>
+      <div class="field"><label for="f-date">Needed by <span class="opt">(optional)</span></label><input id="f-date" name="needed_by" type="date"></div>
+    </div>
+    <div class="field"><label for="f-details">Tell us about it</label><textarea id="f-details" name="details" required placeholder="What's in the photo, what you'd like it on, colors, size, and anything else we should know."></textarea></div>
+    <div class="field"><span class="legend" id="lg-get">How would you like to get it?</span>
+      <div class="radios" role="radiogroup" aria-labelledby="lg-get">
+        <label><input type="radio" name="delivery" value="Pick up in Taylor Mill" id="f-pick" checked> Pick up in Taylor Mill</label>
+        <label><input type="radio" name="delivery" value="Ship it to me" id="f-ship"> Ship it to me</label>
+      </div></div>
+    <div class="hp" aria-hidden="true"><label for="f-hp">Leave this empty</label><input id="f-hp" name="_honey" tabindex="-1" autocomplete="off"></div>
+    <div class="form-foot"><button class="btn" type="submit" id="f-submit">Send my request</button><span class="hint">We&rsquo;ll email you back to talk it over.</span></div>
+    <div id="formStatus" role="status" aria-live="polite"></div>
+  </form>
+</div></section>
+'''
+
+INDEX_JS = r"""
+const ENDPOINT='https://script.google.com/macros/s/AKfycbxP-wyua_pRmH5liRolYHtQNHR08CGFSkDljma6IVhMMlCCh-r9C-3Mh3O4TpSmWXl-/exec';
+const EMAIL='""" + EMAIL + r"""';
+// prefill from "Make one like this"
+const typeMap={plates:'Photo printed on a license plate',glass:'Photo printed on glass',apparel:'Photo printed on a shirt or sweatshirt',decor:'Wreath, swag or arrangement',painted:'Something else crafty',other:'Something else crafty'};
+window.prefill=function(item,cat){
+  const note=document.getElementById('itemNote');note.hidden=false;note.textContent='You’re asking about '+item+'. Tell us how you’d like yours.';
+  if(typeMap[cat])document.getElementById('f-type').value=typeMap[cat];
+  const d=document.getElementById('f-details');if(!d.value)d.value='I’d like '+(item.startsWith('a ')?item:'something like your '+item)+'. ';
+}
+try{const s=JSON.parse(sessionStorage.getItem('sdm-item')||'null');if(s&&location.pathname.indexOf('crafts')<0){window.prefill(s.item,s.cat);sessionStorage.removeItem('sdm-item');}}catch(e){}
+
+const form=document.getElementById('orderForm'),statusEl=document.getElementById('formStatus'),btn=document.getElementById('f-submit');
+function show(kind,html){statusEl.className='status '+kind;statusEl.innerHTML=html;}
+function readFile(f){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]);r.onerror=rej;r.readAsDataURL(f);});}
+function fail(){
+  show('err','We couldn’t send your request just now. Please email it to us directly and we’ll take it from there.<span class="copy-line"><code id="emailCopy">'+EMAIL+'</code><button type="button" class="linkbtn" id="copyBtn">Copy email</button></span>');
+  document.getElementById('copyBtn').addEventListener('click',ev=>{
+    navigator.clipboard?.writeText(EMAIL).then(()=>{ev.target.textContent='Copied';}).catch(()=>{const r=document.createRange();r.selectNodeContents(document.getElementById('emailCopy'));const s=getSelection();s.removeAllRanges();s.addRange(r);});
+  });
+}
+form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const req=['f-name','f-email','f-details'];let bad=null;
+  req.forEach(id=>{const el=document.getElementById(id);const ok=el.value.trim()&&(el.type!=='email'||/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value));el.setAttribute('aria-invalid',ok?'false':'true');if(!ok&&!bad)bad=el;});
+  if(bad){show('err','Please add your name, a valid email and a few details so we can get back to you.');bad.focus();return;}
+  const file=document.getElementById('f-photo').files[0];
+  if(file&&file.size>10*1024*1024){show('err','That photo is over 10 MB. Try a smaller one, or email it to us after you send the form.');return;}
+  const data=Object.fromEntries([...new FormData(form).entries()].filter(([k,v])=>typeof v==='string'));
+  btn.disabled=true;btn.textContent=file?'Uploading your photo…':'Sending…';statusEl.className='';statusEl.textContent='';
+  try{
+    if(!ENDPOINT.startsWith('https://script.google.com/'))throw new Error('Form endpoint not set');
+    if(file)data.photo={name:file.name,type:file.type||'image/jpeg',data:await readFile(file)};
+    const r=await fetch(ENDPOINT,{method:'POST',body:JSON.stringify(data),headers:{'Content-Type':'text/plain;charset=utf-8'}});
+    const j=await r.json();
+    if(!j.ok)throw new Error(j.error||'Send failed');
+    form.reset();document.getElementById('itemNote').hidden=true;
+    show('ok','Thank you! Your request is on its way to us. We’ll email you back soon.');
+  }catch(err){console.error(err);fail();}
+  finally{btn.disabled=false;btn.textContent='Send my request';}
+});
+"""
+
+# ---------------- crafts ----------------
+IDEAS = [
+    ('Pet portraits', 'Your dog, cat or horse on a plate, glass or shirt.'),
+    ('Family photos', 'Grandkids, weddings, reunions and new babies.'),
+    ('Team & school pride', 'Plates and shirts for your team or your kid’s school.'),
+    ('Memorial keepsakes', 'A favorite photo with a name and dates.'),
+    ('Business logos', 'Plates and shirts for your shop, truck or crew.'),
+    ('Seasonal scenes', 'Fall, Christmas and holiday glass for the counter or mantel.'),
+    ('Wreaths & swags', 'Any holiday, any colors, for the door or wall.'),
+    ('Centerpieces & lanterns', 'Built for your table and your season.'),
+    ('Gifts for teachers & neighbors', 'Small custom pieces for the holidays.'),
+]
+chips = ''.join(f'<button type="button" class="chip" data-f="{k}" aria-pressed="{"true" if k=="all" else "false"}">{v}</button>' for k, v in CATS)
+ideas = ''.join(f'<li><b>{a}</b><span>{b}</span></li>' for a, b in IDEAS)
+
+CRAFTS_BODY = f'''
+<section class="page-hero"><div class="wrap">
+  <span class="eyebrow">Our work</span>
+  <h1>Printed pictures, wreaths and handmade pieces</h1>
+  <p class="lede">Everything here was made in our shop. Most pieces are one of a kind, so think of them as ideas. Tap &ldquo;Order one like this&rdquo; and we&rsquo;ll make yours with your photo, your words or your colors.</p>
+</div></section>
+<section class="sec" style="padding-top:32px"><div class="wrap">
+  <div class="filters" role="group" aria-label="Filter crafts">{chips}</div>
+  <div class="grid" id="craftGrid">{''.join(card(c) for c in ITEMS)}</div>
+</div></section>
+<section class="sec alt"><div class="wrap">
+  <div class="sec-head"><span class="eyebrow">More ideas</span><h2>Ideas people love</h2><p class="lede">Don&rsquo;t see it pictured? If it&rsquo;s crafty, we can probably make it. Ask and we&rsquo;ll tell you what&rsquo;s possible.</p></div>
+  <ul class="ideas">{ideas}</ul>
+  <p style="margin-top:32px"><a class="btn" href="index.html#order">Ask about a custom piece</a></p>
+</div></section>
+'''
+
+CRAFTS_JS = r"""
+let current='all';
+window.applyFilter=function(){document.querySelectorAll('#craftGrid .card').forEach(k=>k.hidden=!(current==='all'||k.dataset.cat===current));};
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{
+  document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===c?'true':'false'));current=c.dataset.f;window.applyFilter();}));
+"""
+
+T_INDEX = 'Seasonal Design &amp; More'
+D_INDEX = 'Your photos printed on license plates, glass, shirts and more, plus handmade wreaths and seasonal decor. Seasonal Design and More, Taylor Mill, KY (formerly All Things Craft).'
+T_CRAFTS = 'Our Work · Seasonal Design &amp; More'
+D_CRAFTS = 'Printed license plates, printed glass, shirts, wreaths and arrangements made in our Taylor Mill, KY shop.'
+
+(ROOT / 'index.html').write_text(page(T_INDEX, D_INDEX, 'home', INDEX_BODY, INDEX_JS))
+(ROOT / 'crafts.html').write_text(page(T_CRAFTS, D_CRAFTS, 'crafts', CRAFTS_BODY, CRAFTS_JS))
+print('built', len(ITEMS), 'items')

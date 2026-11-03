@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>My Website · Seasonal Design &amp; More</title>
+<meta name="theme-color" content="#1f3a33">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2217%22 fill=%22none%22 stroke=%22%231f3a33%22 stroke-width=%227%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700;6..12,800&display=swap">
+<style>
+/* One deliberately light, high-contrast look: big type and big targets for an older user on a phone. */
+:root{
+  --bg:#f7f7f2; --surface:#ffffff; --ink:#15281f; --muted:#45584f; --line:#cfd6cb;
+  --green:#1f6b45; --green-ink:#ffffff; --red:#a3283a; --red-ink:#ffffff; --gold:#d9a23a; --focus:#d9a23a;
+  --display:"Young Serif", Georgia, serif; --body:"Nunito Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 20px/1.5 var(--body)}
+.top{background:var(--ink);color:#fff;padding-top:env(safe-area-inset-top,0px)}
+.top .in{max-width:560px;margin:0 auto;padding:14px max(18px, env(safe-area-inset-right,0px)) 14px max(18px, env(safe-area-inset-left,0px));display:flex;align-items:center;justify-content:space-between;gap:12px}
+.top b{font-family:var(--display);font-weight:400;font-size:1.15rem}
+.top a{color:#fff;font-weight:700;font-size:1rem}
+main{max-width:560px;margin:0 auto;padding:24px max(18px, env(safe-area-inset-right,0px)) calc(40px + env(safe-area-inset-bottom,0px)) max(18px, env(safe-area-inset-left,0px))}
+h1{font-family:var(--display);font-weight:400;font-size:2rem;line-height:1.15;margin:0 0 8px}
+h2{font-family:var(--display);font-weight:400;font-size:1.5rem;line-height:1.2;margin:0}
+p{margin:0}
+.lead{color:var(--muted);margin-bottom:24px}
+.stack{display:grid;gap:18px}
+label,.q{display:block;font-weight:800;font-size:1.1rem;margin-bottom:8px}
+.hint{color:var(--muted);font-size:1rem;font-weight:400}
+input[type=email],input[type=password],input[type=text],textarea{width:100%;font:inherit;font-size:1.15rem;color:var(--ink);background:#fff;border:3px solid var(--line);border-radius:14px;padding:16px}
+input:focus,textarea:focus{outline:none;border-color:var(--gold)}
+textarea{min-height:120px;resize:vertical}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:4px solid var(--focus);outline-offset:3px}
+.big{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:68px;border:0;border-radius:16px;font-weight:800;font-size:1.25rem;padding:14px 20px;text-align:center}
+.go{background:var(--green);color:var(--green-ink)}
+.stop{background:var(--red);color:var(--red-ink)}
+.plain{background:#fff;color:var(--ink);border:3px solid var(--ink)}
+.big[disabled]{opacity:.55}
+.back{background:none;border:0;color:var(--ink);font-weight:800;font-size:1.1rem;padding:8px 0;margin-bottom:12px;text-decoration:underline;text-underline-offset:4px}
+.choice{display:grid;grid-template-columns:64px 1fr;gap:16px;align-items:center;width:100%;text-align:left;background:#fff;border:3px solid var(--line);border-radius:18px;padding:18px;color:var(--ink)}
+.choice:active{border-color:var(--gold)}
+.choice .ic{width:64px;height:64px;border-radius:14px;display:grid;place-items:center;font-size:2rem;background:var(--bg)}
+.choice b{display:block;font-size:1.3rem}
+.choice span{color:var(--muted);font-size:1rem}
+.msg{border-radius:14px;padding:16px;font-weight:700}
+.msg.err{background:#fbe6e9;border:3px solid var(--red);color:#5c1320}
+.msg.ok{background:#e3f2e9;border:3px solid var(--green);color:#0f3d26}
+.photo{display:grid;place-items:center;gap:8px;width:100%;min-height:200px;border:4px dashed var(--line);border-radius:18px;background:#fff;color:var(--ink);font-weight:800;font-size:1.25rem;padding:20px}
+.photo .ic{font-size:3rem}
+.preview{display:grid;gap:12px}
+.preview img{width:100%;max-height:60vh;object-fit:contain;background:#fff;border-radius:14px;border:3px solid var(--line)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row2 .big{min-height:58px;font-size:1.05rem}
+.kinds{display:grid;gap:10px}
+.kinds label{display:flex;align-items:center;gap:14px;margin:0;background:#fff;border:3px solid var(--line);border-radius:14px;padding:16px;font-weight:700;font-size:1.15rem}
+.kinds input{width:28px;height:28px;accent-color:var(--green);flex:none}
+.kinds label:has(input:checked){border-color:var(--green);background:#eef7f1}
+.num{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;font-size:1rem;margin-right:8px;vertical-align:middle}
+.item{display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:center;background:#fff;border:3px solid var(--line);border-radius:16px;padding:12px}
+.item img{width:96px;height:96px;object-fit:cover;border-radius:10px;background:var(--bg)}
+.item b{display:block;font-size:1.1rem;line-height:1.3}
+.item .acts{grid-column:1 / -1;display:grid;gap:10px}
+.item .acts .big{min-height:56px;font-size:1.1rem}
+.confirm{font-weight:800;text-align:center}
+.center{text-align:center}
+.done-ic{font-size:4.5rem;line-height:1;margin:12px 0}
+.spin{width:64px;height:64px;border:7px solid var(--line);border-top-color:var(--green);border-radius:50%;margin:24px auto;animation:sp 1s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation-duration:3s}}
+.current{background:#fff8e6;border:3px solid var(--gold);border-radius:14px;padding:16px;font-weight:700}
+.small{font-size:1rem;color:var(--muted)}
+.section-label{font-weight:800;font-size:1.15rem;margin:28px 0 10px}
+[hidden]{display:none!important}
+.pw{position:relative}
+.pw input{padding-right:96px}
+.pw button{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:var(--bg);border-radius:10px;padding:10px 12px;font-weight:800;font-size:1rem;color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="top"><div class="in"><b>My Website</b><a href="../" target="_blank" rel="noopener">See my site ↗</a></div></div>
+<main>
+
+<!-- SIGN IN -->
+<section id="s-login" hidden>
+  <h1>Hello! 👋</h1>
+  <p class="lead">Sign in to change what's on your website.</p>
+  <form id="loginForm" class="stack" novalidate>
+    <div><label for="l-email">Your email</label><input id="l-email" type="email" autocomplete="username" inputmode="email" autocapitalize="off" spellcheck="false"></div>
+    <div><label for="l-pw">Your password</label>
+      <div class="pw"><input id="l-pw" type="password" autocomplete="current-password" autocapitalize="off" spellcheck="false"><button type="button" id="l-show">Show</button></div>
+      <p class="hint" style="margin-top:8px">It has dashes in it, like this: word-word-word-12</p></div>
+    <div id="l-msg" class="msg err" role="alert" hidden></div>
+    <button class="big go" type="submit" id="l-btn">Sign in</button>
+  </form>
+</section>
+
+<!-- HOME -->
+<section id="s-home" hidden>
+  <h1>What would you like to do?</h1>
+  <p class="lead">Tap one of the big buttons.</p>
+  <div class="stack">
+    <button class="choice" data-go="add"><span class="ic">📷</span><span><b>Add something new</b><span>Put a new item and its picture on the website</span></span></button>
+    <button class="choice" data-go="remove"><span class="ic">🗑️</span><span><b>Take something down</b><span>Remove an item that sold or you don't make anymore</span></span></button>
+    <button class="choice" data-go="notice"><span class="ic">📣</span><span><b>Change my notice</b><span>A message at the top, like "Closed Thanksgiving week"</span></span></button>
+  </div>
+  <p class="small center" style="margin-top:36px">Signed in as <span id="h-email"></span>. <button class="back" id="signout" style="margin:0;padding:0;font-size:1rem">Sign out</button></p>
+</section>
+
+<!-- ADD -->
+<section id="s-add" hidden>
+  <button class="back" data-go="home">← Back</button>
+  <h1>Add something new</h1>
+  <form id="addForm" class="stack" novalidate>
+    <div>
+      <span class="q"><span class="num">1</span>Pick a picture</span>
+      <input id="a-file" type="file" accept="image/*" hidden>
+      <button type="button" class="photo" id="a-pick"><span class="ic">📷</span>Tap here to take a picture or choose one</button>
+      <div class="preview" id="a-preview" hidden>
+        <img id="a-img" alt="Your picture">
+        <div class="row2"><button type="button" class="big plain" id="a-turn">↻ Turn picture</button><button type="button" class="big plain" id="a-again">Pick another</button></div>
+      </div>
+    </div>
+    <div><label for="a-name"><span class="num">2</span>What is it called?</label><input id="a-name" type="text" maxlength="80" placeholder="Example: Snowman Glass" autocapitalize="words"></div>
+    <div><label for="a-blurb"><span class="num">3</span>Say a little about it <span class="hint">(you can skip this)</span></label><textarea id="a-blurb" maxlength="300" placeholder="Example: Three snowmen on glass. Great for the kitchen counter."></textarea></div>
+    <div>
+      <span class="q"><span class="num">4</span>What kind of thing is it?</span>
+      <div class="kinds" role="radiogroup" aria-label="Kind of item">
+        <label><input type="radio" name="cat" value="plates"> License plate</label>
+        <label><input type="radio" name="cat" value="glass"> Picture on glass</label>
+        <label><input type="radio" name="cat" value="apparel"> Shirt or sweatshirt</label>
+        <label><input type="radio" name="cat" value="decor"> Wreath or arrangement</label>
+        <label><input type="radio" name="cat" value="painted"> Painted piece</label>
+        <label><input type="radio" name="cat" value="other"> Something else</label>
+      </div>
+    </div>
+    <div id="a-msg" class="msg err" role="alert" hidden></div>
+    <button class="big go" type="submit">Put it on my website</button>
+  </form>
+</section>
+
+<!-- REMOVE -->
+<section id="s-remove" hidden>
+  <button class="back" data-go="home">← Back</button>
+  <h1>Take something down</h1>
+  <p class="lead">Find the item, then tap <b>Take down</b>. Your newest things are at the top.</p>
+  <div id="r-list" class="stack"></div>
+  <div id="r-removed-wrap" hidden>
+    <p class="section-label">Took something down by mistake?</p>
+    <p class="small" style="margin-bottom:12px">Tap <b>Put it back</b> and it goes right back on the website.</p>
+    <div id="r-removed" class="stack"></div>
+  </div>
+</section>
+
+<!-- NOTICE -->
+<section id="s-notice" hidden>
+  <button class="back" data-go="home">← Back</button>
+  <h1>Change my notice</h1>
+  <p class="lead">This shows in a yellow bar at the very top of your website.</p>
+  <div class="stack">
+    <div id="n-current-wrap"><p class="q">Right now it says:</p><p class="current" id="n-current"></p></div>
+    <p id="n-none" class="current" hidden>Right now there is no notice on your website.</p>
+    <div><label for="n-text">Type your new notice</label><textarea id="n-text" maxlength="200" placeholder="Example: Christmas orders are due by December 10!"></textarea></div>
+    <div id="n-msg" class="msg err" role="alert" hidden></div>
+    <button class="big go" id="n-save">Save my notice</button>
+    <button class="big plain" id="n-clear">Take the notice off</button>
+  </div>
+</section>
+
+<!-- WORKING -->
+<section id="s-working" class="center" hidden>
+  <div class="spin" aria-hidden="true"></div>
+  <h2 id="w-title">Putting it on your website…</h2>
+  <p class="lead" style="margin-top:12px">Please keep this screen open. This takes a few seconds.</p>
+</section>
+
+<!-- DONE -->
+<section id="s-done" class="center" hidden>
+  <div class="done-ic" aria-hidden="true">✅</div>
+  <h1 id="d-title">Done!</h1>
+  <p class="lead" id="d-text">It will show on your website in about a minute.</p>
+  <div class="stack">
+    <button class="big go" id="d-again" hidden>Add another</button>
+    <button class="big plain" data-go="home">Back to the start</button>
+  </div>
+</section>
+
+<!-- LOADING -->
+<section id="s-loading" class="center"><div class="spin" aria-hidden="true"></div><p class="lead">Loading…</p></section>
+
+</main>
+<script>
+const API='https://script.google.com/macros/s/AKfycbxP-wyua_pRmH5liRolYHtQNHR08CGFSkDljma6IVhMMlCCh-r9C-3Mh3O4TpSmWXl-/exec';
+const HELP='If it keeps happening, text Sebastian.';
+const $=id=>document.getElementById(id);
+let session=null, data={items:[],removed:[]}, notice='', photo=null;
+
+function store(v){try{v?localStorage.setItem('sdm-admin',JSON.stringify(v)):localStorage.removeItem('sdm-admin')}catch(e){}}
+try{session=JSON.parse(localStorage.getItem('sdm-admin')||'null')}catch(e){}
+
+function show(id){document.querySelectorAll('main > section').forEach(s=>s.hidden=s.id!=='s-'+id);window.scrollTo(0,0);}
+function msg(el,text){el.textContent=text;el.hidden=!text;if(text)el.scrollIntoView({block:'center',behavior:'smooth'});}
+
+async function api(action,extra){
+  const r=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(Object.assign({action,token:session&&session.token},extra||{}))});
+  const j=await r.json();
+  if(j.error==='signed_out'){store(null);session=null;show('login');msg($('l-msg'),'Please sign in again.');throw new Error('signed_out');}
+  return j;
+}
+
+async function load(){
+  const j=await api('list');
+  if(!j.ok)throw new Error(j.error||'list failed');
+  data={items:j.items||[],removed:j.removed||[]};notice=j.notice||'';
+}
+
+async function goHome(){
+  $('h-email').textContent=session.email;
+  show('loading');
+  try{await load();show('home');}
+  catch(e){if(e.message!=='signed_out'){show('home');}}
+}
+
+// navigation
+document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(!b)return;
+  const to=b.dataset.go;
+  if(to==='home')return goHome();
+  if(to==='add'){resetAdd();show('add');}
+  if(to==='remove'){renderRemove();show('remove');}
+  if(to==='notice'){renderNotice();show('notice');}
+});
+
+// sign in
+$('l-show').onclick=()=>{const p=$('l-pw');const s=p.type==='password';p.type=s?'text':'password';$('l-show').textContent=s?'Hide':'Show';};
+$('loginForm').addEventListener('submit',async e=>{
+  e.preventDefault();msg($('l-msg'),'');
+  const email=$('l-email').value.trim(),password=$('l-pw').value.trim();
+  if(!email||!password)return msg($('l-msg'),'Please type your email and your password.');
+  $('l-btn').disabled=true;$('l-btn').textContent='Signing in…';
+  try{
+    const j=await api('login',{email,password});
+    if(j.ok){session={token:j.token,email};store(session);$('l-pw').value='';return goHome();}
+    msg($('l-msg'),j.error==='locked'?'Too many tries. Please wait 15 minutes and try again.':'That email or password is not right. Please check them and try again.');
+  }catch(err){msg($('l-msg'),'Could not connect. Check your internet and try again.');}
+  finally{$('l-btn').disabled=false;$('l-btn').textContent='Sign in';}
+});
+$('signout').onclick=()=>{store(null);session=null;show('login');};
+
+// ADD
+function resetAdd(){photo=null;$('addForm').reset();$('a-preview').hidden=true;$('a-pick').hidden=false;msg($('a-msg'),'');}
+$('a-pick').onclick=()=>$('a-file').click();
+$('a-again').onclick=()=>$('a-file').click();
+function draw(img,rot){
+  const max=1400;const sw=img.naturalWidth,sh=img.naturalHeight;const s=Math.min(1,max/Math.max(sw,sh));
+  const w=Math.round(sw*s),h=Math.round(sh*s);const side=rot%180!==0;
+  const c=document.createElement('canvas');c.width=side?h:w;c.height=side?w:h;const g=c.getContext('2d');
+  g.translate(c.width/2,c.height/2);g.rotate(rot*Math.PI/180);g.drawImage(img,-w/2,-h/2,w,h);
+  return {data:c.toDataURL('image/jpeg',0.82).split(',')[1],w:c.width,h:c.height,src:c.toDataURL('image/jpeg',0.7)};
+}
+$('a-file').onchange=async()=>{
+  const f=$('a-file').files[0];if(!f)return;msg($('a-msg'),'');
+  try{
+    const url=URL.createObjectURL(f);const img=new Image();img.src=url;await img.decode();
+    photo={img,rot:0,...draw(img,0)};URL.revokeObjectURL(url);
+    $('a-img').src=photo.src;$('a-preview').hidden=false;$('a-pick').hidden=true;
+  }catch(e){msg($('a-msg'),'That picture would not open. Please try a different one.');}
+};
+$('a-turn').onclick=()=>{if(!photo)return;photo.rot=(photo.rot+90)%360;Object.assign(photo,draw(photo.img,photo.rot));$('a-img').src=photo.src;};
+$('addForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const name=$('a-name').value.trim(),blurb=$('a-blurb').value.trim(),catEl=document.querySelector('input[name=cat]:checked');
+  if(!photo)return msg($('a-msg'),'Please pick a picture first (step 1).');
+  if(!name)return msg($('a-msg'),'Please type what it is called (step 2).');
+  if(!catEl)return msg($('a-msg'),'Please tap what kind of thing it is (step 4).');
+  $('w-title').textContent='Putting it on your website…';show('working');
+  try{
+    const j=await api('add',{name,blurb,cat:catEl.value,photo:{data:photo.data,w:photo.w,h:photo.h}});
+    if(!j.ok)throw new Error(j.error);
+    data.items.unshift(j.item);
+    done('It\'s on your website!','"'+name+'" will show on your website in about a minute.',true);
+  }catch(err){if(err.message==='signed_out')return;show('add');msg($('a-msg'),'Something went wrong and it was not saved. Please tap the green button again. '+HELP);}
+});
+
+// REMOVE
+function thumb(it){return '../'+it.img;}
+function itemRow(it,mode){
+  const d=document.createElement('div');d.className='item';
+  d.innerHTML='<img alt="" loading="lazy"><div><b></b></div><div class="acts"></div>';
+  const im=d.querySelector('img');im.src=thumb(it);im.onerror=()=>{im.style.visibility='hidden'};
+  d.querySelector('b').textContent=it.name;
+  const acts=d.querySelector('.acts');
+  if(mode==='live'){
+    const b=document.createElement('button');b.className='big stop';b.textContent='Take down';
+    b.onclick=()=>{acts.innerHTML='<p class="confirm">Take this off your website?</p><button class="big stop">Yes, take it down</button><button class="big plain">No, keep it</button>';
+      const [yes,no]=acts.querySelectorAll('button');
+      no.onclick=()=>renderRemove();
+      yes.onclick=()=>change('remove',{id:it.id},'Taking it down…','It\'s taken down.','"'+it.name+'" will be gone from your website in about a minute.');};
+    acts.appendChild(b);
+  }else{
+    const b=document.createElement('button');b.className='big plain';b.textContent='Put it back';
+    b.onclick=()=>change('restore',{id:it.id},'Putting it back…','It\'s back!','"'+it.name+'" will be back on your website in about a minute.');
+    acts.appendChild(b);
+  }
+  return d;
+}
+function renderRemove(){
+  const L=$('r-list');L.innerHTML='';
+  if(!data.items.length)L.innerHTML='<p class="current">There is nothing on your website right now.</p>';
+  data.items.forEach(it=>L.appendChild(itemRow(it,'live')));
+  const R=$('r-removed');R.innerHTML='';
+  $('r-removed-wrap').hidden=!data.removed.length;
+  data.removed.slice(0,10).forEach(it=>R.appendChild(itemRow(it,'removed')));
+}
+
+// NOTICE
+function renderNotice(){
+  $('n-text').value='';msg($('n-msg'),'');
+  const has=!!notice.trim();$('n-current-wrap').hidden=!has;$('n-none').hidden=has;$('n-clear').hidden=!has;$('n-current').textContent=notice;
+}
+$('n-save').onclick=()=>{const t=$('n-text').value.trim();if(!t)return msg($('n-msg'),'Please type your notice in the box first.');
+  change('notice',{notice:t},'Saving your notice…','Your notice is saved!','It will show at the top of your website in about a minute.');};
+$('n-clear').onclick=()=>change('notice',{notice:''},'Taking the notice off…','The notice is off.','It will be gone from your website in about a minute.');
+
+async function change(action,extra,working,title,text){
+  $('w-title').textContent=working;show('working');
+  try{
+    const j=await api(action,extra);if(!j.ok)throw new Error(j.error);
+    if(j.items)data={items:j.items,removed:j.removed||[]};
+    if('notice' in j)notice=j.notice||'';
+    done(title,text,false);
+  }catch(err){if(err.message==='signed_out')return;
+    show(action==='notice'?'notice':'remove');
+    if(action==='notice')msg($('n-msg'),'Something went wrong and it was not saved. Please try again. '+HELP);
+    else{renderRemove();const m=document.createElement('p');m.className='msg err';m.textContent='Something went wrong. Please try again. '+HELP;$('r-list').prepend(m);}
+  }
+}
+function done(title,text,again){$('d-title').textContent=title;$('d-text').textContent=text;$('d-again').hidden=!again;show('done');}
+$('d-again').onclick=()=>{resetAdd();show('add');};
+
+// start
+if(session&&session.token){goHome();}else{show('login');}
+</script>
+</body>
+</html>
