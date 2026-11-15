@@ -41,16 +41,6 @@
       "h": 1000
     },
     {
-      "id": "christmas-lantern-arrangement",
-      "name": "Winter Lantern Arrangement",
-      "cat": "decor",
-      "tag": "Arrangement · Christmas",
-      "blurb": "A white wooden lantern frame filled with frosted pine, holly, berries and a red cardinal.",
-      "img": "img/christmas-lantern-arrangement.jpg",
-      "w": 775,
-      "h": 1000
-    },
-    {
       "id": "americana-porch-swing",
       "name": "Americana Porch Swing",
       "cat": "painted",
@@ -62,6 +52,16 @@
     }
   ],
   "removed": [
+    {
+      "id": "christmas-lantern-arrangement",
+      "name": "Winter Lantern Arrangement",
+      "cat": "decor",
+      "tag": "Arrangement · Christmas",
+      "blurb": "A white wooden lantern frame filled with frosted pine, holly, berries and a red cardinal.",
+      "img": "img/christmas-lantern-arrangement.jpg",
+      "w": 775,
+      "h": 1000
+    },
     {
       "id": "christmas-urn-centerpiece",
       "name": "Holly Urn Centerpiece",
