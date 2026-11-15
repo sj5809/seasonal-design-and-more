@@ -82,16 +82,6 @@
       "h": 1000
     },
     {
-      "id": "xoxo-valentine-wreath",
-      "name": "XOXO Burlap Wreath",
-      "cat": "decor",
-      "tag": "Valentine's Day",
-      "blurb": "Burlap, glitter hearts and \"XOXO\" ribbon worked into a full, round mesh wreath.",
-      "img": "img/xoxo-valentine-wreath.jpg",
-      "w": 643,
-      "h": 800
-    },
-    {
       "id": "spring-wreath",
       "name": "Pastel Spring Wreath",
       "cat": "decor",
@@ -123,6 +113,16 @@
     }
   ],
   "removed": [
+    {
+      "id": "xoxo-valentine-wreath",
+      "name": "XOXO Burlap Wreath",
+      "cat": "decor",
+      "tag": "Valentine's Day",
+      "blurb": "Burlap, glitter hearts and \"XOXO\" ribbon worked into a full, round mesh wreath.",
+      "img": "img/xoxo-valentine-wreath.jpg",
+      "w": 643,
+      "h": 800
+    },
     {
       "id": "red-heart-wreath",
       "name": "Sweetheart Wreath",
