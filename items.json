@@ -82,16 +82,6 @@
       "h": 1000
     },
     {
-      "id": "nutcracker-porch-signs",
-      "name": "Nutcracker Porch Pair",
-      "cat": "painted",
-      "tag": "Christmas",
-      "blurb": "Hand-painted wooden nutcrackers in red and green, gold details and all. Sized to stand beside the front door.",
-      "img": "img/nutcracker-porch-signs.jpg",
-      "w": 510,
-      "h": 800
-    },
-    {
       "id": "red-heart-wreath",
       "name": "Sweetheart Wreath",
       "cat": "decor",
@@ -143,6 +133,16 @@
     }
   ],
   "removed": [
+    {
+      "id": "nutcracker-porch-signs",
+      "name": "Nutcracker Porch Pair",
+      "cat": "painted",
+      "tag": "Christmas",
+      "blurb": "Hand-painted wooden nutcrackers in red and green, gold details and all. Sized to stand beside the front door.",
+      "img": "img/nutcracker-porch-signs.jpg",
+      "w": 510,
+      "h": 800
+    },
     {
       "id": "christmas-magnolia-centerpiece",
       "name": "Magnolia & Pine Centerpiece",
