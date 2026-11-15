@@ -1,6 +1,16 @@
 {
   "items": [
     {
+      "id": "glass-let-it-snow",
+      "name": "\"Let It Snow\" Snowmen Glass",
+      "cat": "glass",
+      "tag": "Glass · Christmas",
+      "blurb": "A snowman family in plaid scarves with a glowing winter village behind them.",
+      "img": "img/glass-let-it-snow.jpg",
+      "w": 1000,
+      "h": 651
+    },
+    {
       "id": "christmas-lantern-arrangement",
       "name": "Winter Lantern Arrangement",
       "cat": "decor",
@@ -97,16 +107,6 @@
     }
   ],
   "removed": [
-    {
-      "id": "glass-let-it-snow",
-      "name": "\"Let It Snow\" Snowmen Glass",
-      "cat": "glass",
-      "tag": "Glass · Christmas",
-      "blurb": "A snowman family in plaid scarves with a glowing winter village behind them.",
-      "img": "img/glass-let-it-snow.jpg",
-      "w": 1000,
-      "h": 651
-    },
     {
       "id": "glass-gather-here",
       "name": "\"Gather Here\" Glass",
