@@ -1,16 +1,6 @@
 {
   "items": [
     {
-      "id": "glass-gather-here",
-      "name": "\"Gather Here\" Glass",
-      "cat": "glass",
-      "tag": "Glass · Thanksgiving",
-      "blurb": "\"Gather Here With Grateful Hearts\" over a cozy autumn porch scene. A warm piece for the Thanksgiving table or counter.",
-      "img": "img/glass-gather-here.jpg",
-      "w": 1000,
-      "h": 740
-    },
-    {
       "id": "glass-let-it-snow",
       "name": "\"Let It Snow\" Snowmen Glass",
       "cat": "glass",
@@ -52,6 +42,16 @@
     }
   ],
   "removed": [
+    {
+      "id": "glass-gather-here",
+      "name": "\"Gather Here\" Glass",
+      "cat": "glass",
+      "tag": "Glass · Thanksgiving",
+      "blurb": "\"Gather Here With Grateful Hearts\" over a cozy autumn porch scene. A warm piece for the Thanksgiving table or counter.",
+      "img": "img/glass-gather-here.jpg",
+      "w": 1000,
+      "h": 740
+    },
     {
       "id": "christmas-lantern-arrangement",
       "name": "Winter Lantern Arrangement",
