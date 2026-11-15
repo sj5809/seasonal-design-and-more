@@ -92,16 +92,6 @@
       "h": 1000
     },
     {
-      "id": "fall-frame-swag",
-      "name": "Rustic Frame Fall Swag",
-      "cat": "decor",
-      "tag": "Wall décor · Fall",
-      "blurb": "A distressed wood frame with a big burlap and plaid bow and autumn florals. Hangs on a door or wall.",
-      "img": "img/fall-frame-swag.jpg",
-      "w": 1000,
-      "h": 938
-    },
-    {
       "id": "orange-plaid-wreath",
       "name": "Harvest Plaid Wreath",
       "cat": "decor",
@@ -182,5 +172,16 @@
       "h": 684
     }
   ],
-  "removed": []
+  "removed": [
+    {
+      "id": "fall-frame-swag",
+      "name": "Rustic Frame Fall Swag",
+      "cat": "decor",
+      "tag": "Wall décor · Fall",
+      "blurb": "A distressed wood frame with a big burlap and plaid bow and autumn florals. Hangs on a door or wall.",
+      "img": "img/fall-frame-swag.jpg",
+      "w": 1000,
+      "h": 938
+    }
+  ]
 }
