@@ -92,16 +92,6 @@
       "h": 639
     },
     {
-      "id": "blue-white-wreath",
-      "name": "Blue & White Wreath",
-      "cat": "decor",
-      "tag": "Any season · Team colors",
-      "blurb": "Royal blue and white mesh with glittered ribbon. Ask for it in your team or school colors.",
-      "img": "img/blue-white-wreath.jpg",
-      "w": 479,
-      "h": 639
-    },
-    {
       "id": "americana-porch-swing",
       "name": "Americana Porch Swing",
       "cat": "painted",
@@ -113,6 +103,16 @@
     }
   ],
   "removed": [
+    {
+      "id": "blue-white-wreath",
+      "name": "Blue & White Wreath",
+      "cat": "decor",
+      "tag": "Any season · Team colors",
+      "blurb": "Royal blue and white mesh with glittered ribbon. Ask for it in your team or school colors.",
+      "img": "img/blue-white-wreath.jpg",
+      "w": 479,
+      "h": 639
+    },
     {
       "id": "xoxo-valentine-wreath",
       "name": "XOXO Burlap Wreath",
