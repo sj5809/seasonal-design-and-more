@@ -1,17 +1,6 @@
 {
   "items": [
     {
-      "id": "plate-uk-wildcats",
-      "name": "Wildcats License Plate",
-      "cat": "plates",
-      "tag": "License plate",
-      "blurb": "Big Blue on a printed plate for the front of the car, the garage or the man cave. Ask about your team or school.",
-      "img": "img/plate-uk-wildcats.jpg",
-      "w": 966,
-      "h": 588,
-      "fit": "contain"
-    },
-    {
       "id": "glass-gather-here",
       "name": "\"Gather Here\" Glass",
       "cat": "glass",
@@ -83,6 +72,17 @@
     }
   ],
   "removed": [
+    {
+      "id": "plate-uk-wildcats",
+      "name": "Wildcats License Plate",
+      "cat": "plates",
+      "tag": "License plate",
+      "blurb": "Big Blue on a printed plate for the front of the car, the garage or the man cave. Ask about your team or school.",
+      "img": "img/plate-uk-wildcats.jpg",
+      "w": 966,
+      "h": 588,
+      "fit": "contain"
+    },
     {
       "id": "glass-highland-cows",
       "name": "Highland Cow Harvest Glass",
