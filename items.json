@@ -1,6 +1,16 @@
 {
   "items": [
     {
+      "id": "glass-christmas-village",
+      "name": "Christmas Village Glass",
+      "cat": "glass",
+      "tag": "Glass · Christmas",
+      "blurb": "A snowy village square with a lit tree, lanterns and a horse-drawn sleigh. Pure Christmas card.",
+      "img": "img/glass-christmas-village.jpg",
+      "w": 1000,
+      "h": 592
+    },
+    {
       "id": "sweatshirt-fall-print",
       "name": "Printed Fall Sweatshirt",
       "cat": "apparel",
@@ -77,16 +87,6 @@
     }
   ],
   "removed": [
-    {
-      "id": "glass-christmas-village",
-      "name": "Christmas Village Glass",
-      "cat": "glass",
-      "tag": "Glass · Christmas",
-      "blurb": "A snowy village square with a lit tree, lanterns and a horse-drawn sleigh. Pure Christmas card.",
-      "img": "img/glass-christmas-village.jpg",
-      "w": 1000,
-      "h": 592
-    },
     {
       "id": "glass-let-it-snow",
       "name": "\"Let It Snow\" Snowmen Glass",
