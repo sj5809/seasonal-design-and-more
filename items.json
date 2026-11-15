@@ -1,6 +1,17 @@
 {
   "items": [
     {
+      "id": "gather-here-glass-20261114-220312",
+      "name": "Gather Here-Glass",
+      "cat": "glass",
+      "tag": "Printed glass",
+      "blurb": "Enjoy the beauty of fall memories. Gather Here with Grateful Hearts.",
+      "img": "img/uploads/gather-here-glass-20261114-220312.jpg",
+      "w": 1400,
+      "h": 985,
+      "added": "2026-11-15T03:03:14.248Z"
+    },
+    {
       "id": "vintage-red-truck-personalized-cutting-b-20261114-213126",
       "name": "Vintage Red Truck Personalized Cutting Board",
       "cat": "other",
