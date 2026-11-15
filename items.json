@@ -72,16 +72,6 @@
       "h": 1000
     },
     {
-      "id": "christmas-magnolia-centerpiece",
-      "name": "Magnolia & Pine Centerpiece",
-      "cat": "decor",
-      "tag": "Centerpiece · Christmas",
-      "blurb": "Deep red magnolias with long-needle pine and pinecones, built low for the dining table.",
-      "img": "img/christmas-magnolia-centerpiece.jpg",
-      "w": 882,
-      "h": 1000
-    },
-    {
       "id": "christmas-urn-centerpiece",
       "name": "Holly Urn Centerpiece",
       "cat": "decor",
@@ -153,6 +143,16 @@
     }
   ],
   "removed": [
+    {
+      "id": "christmas-magnolia-centerpiece",
+      "name": "Magnolia & Pine Centerpiece",
+      "cat": "decor",
+      "tag": "Centerpiece · Christmas",
+      "blurb": "Deep red magnolias with long-needle pine and pinecones, built low for the dining table.",
+      "img": "img/christmas-magnolia-centerpiece.jpg",
+      "w": 882,
+      "h": 1000
+    },
     {
       "id": "fall-centerpiece",
       "name": "Give Thanks Centerpiece",
