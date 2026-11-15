@@ -1,6 +1,17 @@
 {
   "items": [
     {
+      "id": "license-plate-20261114-221451",
+      "name": "License Plate",
+      "cat": "plates",
+      "tag": "License plate",
+      "blurb": "Your design we create it! These little guys, Pet Mafia are 4 legged detectives, their owners wanted them front and center!",
+      "img": "img/uploads/license-plate-20261114-221451.jpg",
+      "w": 1400,
+      "h": 859,
+      "added": "2026-11-15T03:14:53.345Z"
+    },
+    {
       "id": "gather-here-glass-20261114-220312",
       "name": "Gather Here-Glass",
       "cat": "glass",
