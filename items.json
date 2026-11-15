@@ -82,16 +82,6 @@
       "h": 1000
     },
     {
-      "id": "spring-wreath",
-      "name": "Pastel Spring Wreath",
-      "cat": "decor",
-      "tag": "Spring · Easter",
-      "blurb": "Lavender, robin-egg blue, buttercup and pink. Spring in curls and bows.",
-      "img": "img/spring-wreath.jpg",
-      "w": 479,
-      "h": 639
-    },
-    {
       "id": "americana-porch-swing",
       "name": "Americana Porch Swing",
       "cat": "painted",
@@ -103,6 +93,16 @@
     }
   ],
   "removed": [
+    {
+      "id": "spring-wreath",
+      "name": "Pastel Spring Wreath",
+      "cat": "decor",
+      "tag": "Spring · Easter",
+      "blurb": "Lavender, robin-egg blue, buttercup and pink. Spring in curls and bows.",
+      "img": "img/spring-wreath.jpg",
+      "w": 479,
+      "h": 639
+    },
     {
       "id": "blue-white-wreath",
       "name": "Blue & White Wreath",
