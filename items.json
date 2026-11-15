@@ -92,16 +92,6 @@
       "h": 1000
     },
     {
-      "id": "orange-plaid-wreath",
-      "name": "Harvest Plaid Wreath",
-      "cat": "decor",
-      "tag": "Fall · Halloween",
-      "blurb": "Pumpkin-orange burlap and black buffalo plaid over black deco mesh. Bold enough to read from the street.",
-      "img": "img/orange-plaid-wreath.jpg",
-      "w": 643,
-      "h": 800
-    },
-    {
       "id": "fall-centerpiece",
       "name": "Give Thanks Centerpiece",
       "cat": "decor",
@@ -173,6 +163,16 @@
     }
   ],
   "removed": [
+    {
+      "id": "orange-plaid-wreath",
+      "name": "Harvest Plaid Wreath",
+      "cat": "decor",
+      "tag": "Fall · Halloween",
+      "blurb": "Pumpkin-orange burlap and black buffalo plaid over black deco mesh. Bold enough to read from the street.",
+      "img": "img/orange-plaid-wreath.jpg",
+      "w": 643,
+      "h": 800
+    },
     {
       "id": "fall-frame-swag",
       "name": "Rustic Frame Fall Swag",
