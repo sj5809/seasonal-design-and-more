@@ -1,16 +1,6 @@
 {
   "items": [
     {
-      "id": "glass-highland-cows",
-      "name": "Highland Cow Harvest Glass",
-      "cat": "glass",
-      "tag": "Glass · Fall",
-      "blurb": "Highland cows, a red barn and a mountain sunset printed in full color on glass. Glossy, vivid and made to be displayed.",
-      "img": "img/glass-highland-cows.jpg",
-      "w": 997,
-      "h": 896
-    },
-    {
       "id": "plate-uk-wildcats",
       "name": "Wildcats License Plate",
       "cat": "plates",
@@ -93,6 +83,16 @@
     }
   ],
   "removed": [
+    {
+      "id": "glass-highland-cows",
+      "name": "Highland Cow Harvest Glass",
+      "cat": "glass",
+      "tag": "Glass · Fall",
+      "blurb": "Highland cows, a red barn and a mountain sunset printed in full color on glass. Glossy, vivid and made to be displayed.",
+      "img": "img/glass-highland-cows.jpg",
+      "w": 997,
+      "h": 896
+    },
     {
       "id": "spring-wreath",
       "name": "Pastel Spring Wreath",
