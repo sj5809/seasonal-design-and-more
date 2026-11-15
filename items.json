@@ -92,16 +92,6 @@
       "h": 1000
     },
     {
-      "id": "fall-centerpiece",
-      "name": "Give Thanks Centerpiece",
-      "cat": "decor",
-      "tag": "Fall · Thanksgiving",
-      "blurb": "Maple leaves, wheat, a little pumpkin and a hand-lettered \"thankful\" pick. Made for a table, bench or porch step.",
-      "img": "img/fall-centerpiece.jpg",
-      "w": 336,
-      "h": 448
-    },
-    {
       "id": "nutcracker-porch-signs",
       "name": "Nutcracker Porch Pair",
       "cat": "painted",
@@ -163,6 +153,16 @@
     }
   ],
   "removed": [
+    {
+      "id": "fall-centerpiece",
+      "name": "Give Thanks Centerpiece",
+      "cat": "decor",
+      "tag": "Fall · Thanksgiving",
+      "blurb": "Maple leaves, wheat, a little pumpkin and a hand-lettered \"thankful\" pick. Made for a table, bench or porch step.",
+      "img": "img/fall-centerpiece.jpg",
+      "w": 336,
+      "h": 448
+    },
     {
       "id": "orange-plaid-wreath",
       "name": "Harvest Plaid Wreath",
