@@ -1,6 +1,16 @@
 {
   "items": [
     {
+      "id": "christmas-lantern-arrangement",
+      "name": "Winter Lantern Arrangement",
+      "cat": "decor",
+      "tag": "Arrangement · Christmas",
+      "blurb": "A white wooden lantern frame filled with frosted pine, holly, berries and a red cardinal.",
+      "img": "img/christmas-lantern-arrangement.jpg",
+      "w": 775,
+      "h": 1000
+    },
+    {
       "id": "glass-christmas-village",
       "name": "Christmas Village Glass",
       "cat": "glass",
@@ -106,16 +116,6 @@
       "img": "img/glass-gather-here.jpg",
       "w": 1000,
       "h": 740
-    },
-    {
-      "id": "christmas-lantern-arrangement",
-      "name": "Winter Lantern Arrangement",
-      "cat": "decor",
-      "tag": "Arrangement · Christmas",
-      "blurb": "A white wooden lantern frame filled with frosted pine, holly, berries and a red cardinal.",
-      "img": "img/christmas-lantern-arrangement.jpg",
-      "w": 775,
-      "h": 1000
     },
     {
       "id": "christmas-urn-centerpiece",
