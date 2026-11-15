@@ -31,16 +31,6 @@
       "h": 592
     },
     {
-      "id": "sweatshirt-fall-print",
-      "name": "Printed Fall Sweatshirt",
-      "cat": "apparel",
-      "tag": "Shirts & sweatshirts",
-      "blurb": "A full-color fall scene printed on a soft white sweatshirt. Send us any picture and we can put it on a shirt.",
-      "img": "img/sweatshirt-fall-print.jpg",
-      "w": 912,
-      "h": 1000
-    },
-    {
       "id": "celebrate-her-birthday-20261114-221753",
       "name": "Celebrate Her Birthday!",
       "cat": "glass",
@@ -107,6 +97,16 @@
     }
   ],
   "removed": [
+    {
+      "id": "sweatshirt-fall-print",
+      "name": "Printed Fall Sweatshirt",
+      "cat": "apparel",
+      "tag": "Shirts & sweatshirts",
+      "blurb": "A full-color fall scene printed on a soft white sweatshirt. Send us any picture and we can put it on a shirt.",
+      "img": "img/sweatshirt-fall-print.jpg",
+      "w": 912,
+      "h": 1000
+    },
     {
       "id": "glass-gather-here",
       "name": "\"Gather Here\" Glass",
